@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programma's – Junior AI League</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.prog-detail { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; margin-bottom:80px; padding-bottom:80px; border-bottom:1px solid var(--border); }
+.prog-detail:last-child { border-bottom:none; margin-bottom:0; }
+.prog-detail-badge { display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background:var(--teal); font-family:'Rajdhani',sans-serif; font-size:28px; font-weight:700; color:#fff; margin-bottom:20px; }
+.prog-detail-type { font-family:'Rajdhani',sans-serif; font-size:12px; font-weight:700; letter-spacing:.2em; color:var(--teal); text-transform:uppercase; margin-bottom:8px; }
+.prog-detail h3 { font-size:clamp(24px,3vw,36px); color:var(--navy); margin-bottom:16px; }
+.prog-detail-list { list-style:none; margin-top:20px; }
+.prog-detail-list li { padding:10px 0 10px 22px; border-bottom:1px solid var(--border); position:relative; font-size:15px; line-height:1.5; }
+.prog-detail-list li::before { content:'›'; position:absolute; left:0; color:var(--teal); font-size:18px; line-height:1.4; }
+.prog-visual { background:linear-gradient(135deg,var(--navy),#013a60); border-radius:16px; padding:40px; }
+.prog-visual h4 { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:.2em; color:var(--mint); text-transform:uppercase; margin-bottom:24px; }
+.prog-visual-item { display:flex; gap:16px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,.08); }
+.prog-visual-item:last-child { border-bottom:none; }
+.prog-visual-icon { width:36px; height:36px; border-radius:8px; background:rgba(9,159,138,.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.prog-visual-icon svg { width:18px; height:18px; fill:var(--teal); }
+.prog-visual-text strong { display:block; font-family:'Rajdhani',sans-serif; font-size:14px; font-weight:700; color:#fff; margin-bottom:3px; }
+.prog-visual-text span { font-size:13px; color:rgba(255,255,255,.55); line-height:1.5; }
+.steps-row { display:grid; grid-template-columns:repeat(5,1fr); gap:0; position:relative; margin-bottom:20px; }
+.steps-row::before { content:''; position:absolute; top:28px; left:10%; right:10%; height:2px; background:linear-gradient(90deg,var(--teal),var(--mint)); }
+.step-item { text-align:center; position:relative; z-index:1; padding:0 8px; }
+.step-circle { width:56px; height:56px; border-radius:50%; background:var(--navy); border:3px solid var(--teal); display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; color:#fff; }
+.step-lbl { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; color:var(--navy); letter-spacing:.04em; text-align:center; line-height:1.3; }
+@media(max-width:960px){ .prog-detail{ grid-template-columns:1fr; } .steps-row{ grid-template-columns:1fr 1fr; } .steps-row::before{ display:none; } }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-in"><a href="index.html" class="nav-logo"><img src="https://irp.cdn-website.com/5f9ed68d/dms3rep/multi/LOGO+JAIL_1.svg" onerror="this.style.display='none'" alt="Junior AI League"><div class="nav-wordmark">Junior AI League<small>Powered by NextGen AI</small></div></a><ul class="nav-links"><li><a href="index.html#waarom">Waarom</a></li><li><a href="programmas.html" class="active">Programma's</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="in-beeld.html">In beeld</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="index.html#contact" class="btn btn-teal btn-sm nav-cta">Start een league</a></li></ul></div></nav>
+
+<section class="page-hero"><div class="wrap"><span class="tag page-hero-tag r">Het programma</span><h1 class="r">Kies de schaal die past bij <em>jouw stad.</em></h1><p class="r">Elke stad, regio of organisatie kan op elk moment samen met ons een league starten. Van een krachtig eendaags event tot een volledig stadsprogramma met prototypes.</p></div></section>
+
+<section class="section-light" style="padding-top:100px;">
+  <div class="wrap">
+    <div style="margin-bottom:72px;" class="r">
+      <span class="tag">Hoe het werkt</span>
+      <h2>Van probleem naar <em>prototype.</em></h2>
+      <div class="rule"></div>
+      <div class="steps-row" style="margin-top:40px;">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-lbl">Teams vormen en probleem kiezen</div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-lbl">Onderzoeken met AI</div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-lbl">Oplossing uitwerken</div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-lbl">Presenteren aan jury</div></div>
+        <div class="step-item"><div class="step-circle">5</div><div class="step-lbl">Van idee naar prototype (L)</div></div>
+      </div>
+    </div>
+
+    <div id="s" class="prog-detail r">
+      <div>
+        <div class="prog-detail-badge">S</div>
+        <div class="prog-detail-type">AI Hackathon Event</div>
+        <h3>Eendaags event — direct impact</h3>
+        <div class="rule"></div>
+        <p class="lead" style="margin-bottom:16px;">Eén dag, één thema, echte oplossingen. Kinderen komen samen, vormen teams en gaan direct aan de slag met AI. Aan het einde presenteren ze hun ideeën aan een jury en de opdrachtgever.</p>
+        <p class="lead">Dit is de instapvariant van de Junior AI League — en ook de meest directe manier om te laten zien wat kinderen kunnen als je ze de ruimte geeft.</p>
+        <ul class="prog-detail-list">
+          <li>Eendaags hackathon event</li>
+          <li>50 tot 100 kinderen doen mee</li>
+          <li>Teams van 3 tot 5 kinderen</li>
+          <li>Eigen kindvriendelijke AI-omgeving</li>
+          <li>Presentatie aan jury en opdrachtgever</li>
+          <li>Communicatie toolkit inbegrepen</li>
+          <li>Samenvatting van ideeën</li>
+        </ul>
+        <br>
+        <a href="index.html#contact" class="btn btn-teal">Vraag informatie aan</a>
+      </div>
+      <div class="prog-visual">
+        <h4>Wat je krijgt</h4>
+        <div class="prog-visual-item"><div class="prog-visual-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div><div class="prog-visual-text"><strong>50 tot 100 kinderen</strong><span>Betrokken jonge inwoners die AI vaardig worden</span></div></div>
+        <div class="prog-visual-item"><div class="prog-visual-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="prog-visual-text"><strong>Communicatie toolkit</strong><span>Persberichten, social content en beeldmateriaal</span></div></div>
+        <div class="prog-visual-item"><div class="prog-visual-icon"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div><div class="prog-visual-text"><strong>Samenvatting van ideeën</strong><span>Concrete inzichten uit het perspectief van de jeugd</span></div></div>
+      </div>
+    </div>
+
+    <div id="m" class="prog-detail r">
+      <div>
+        <div class="prog-detail-badge">M</div>
+        <div class="prog-detail-type">AI City Challenge</div>
+        <h3>Traject van 4 tot 6 weken — de hele wijk doet mee</h3>
+        <div class="rule"></div>
+        <p class="lead" style="margin-bottom:16px;">De AI City Challenge gaat verder dan één dag. In een traject van 4 tot 6 weken worden kinderen voorbereid op de hackathon via workshops op scholen en in de wijk. Het sluit af met een groot hackathon event en een presentatie aan jury en opdrachtgever.</p>
+        <p class="lead">Dit format haalt meer kinderen op en verbindt ze met hun buurt, hun school en hun stad.</p>
+        <ul class="prog-detail-list">
+          <li>Alles uit het S-programma, plus:</li>
+          <li>Voorbereidingstraject van 4 tot 6 weken</li>
+          <li>Workshops in scholen en in de wijk</li>
+          <li>Train de trainer voor begeleiders</li>
+          <li>Deelname van 200 kinderen</li>
+          <li>Actieve betrokkenheid buurtorganisaties</li>
+          <li>Uitgebreid impactrapport met inzichten</li>
+        </ul>
+        <br>
+        <a href="index.html#contact" class="btn btn-teal">Vraag informatie aan</a>
+      </div>
+      <div class="prog-visual">
+        <h4>Wat je krijgt</h4>
+        <div class="prog-visual-item"><div class="prog-visual-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div><div class="prog-visual-text"><strong>200 kinderen</strong><span>Actieve betrokkenheid van jongeren uit meerdere wijken</span></div></div>
+        <div class="prog-visual-item"><div class="prog-visual-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><div class="prog-visual-text"><strong>Uitgebreid impactrapport</strong><span>Kwantitatieve en kwalitatieve inzichten voor beleid</span></div></div>
+        <div class="prog-visual-item"><div class="prog-visual-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div><div class="prog-visual-text"><strong>Train de trainer</strong><span>Begeleiders in de wijk worden opgeleid en empowered</span></div></div>
+      </div>
+    </div>
+
+    <div id="l" class="prog-detail r">
+      <div>
+        <div class="prog-detail-badge">L</div>
+        <div class="prog-detail-type">AI City Prototypes</div>
+        <h3>Van idee naar prototype — de stad als laboratorium</h3>
+        <div class="rule"></div>
+        <p class="lead" style="margin-bottom:16px;">Het meest complete programma. Na de hackathon gaan de winnende teams verder. Ze werken samen met lokale experts en organisaties om hun idee écht te ontwikkelen tot een werkend prototype. Het sluit af met een stadsbreed showcase event.</p>
+        <p class="lead">Dit is het programma voor steden die willen laten zien dat ze AI en de jeugd serieus nemen.</p>
+        <ul class="prog-detail-list">
+          <li>Alles uit het M-programma, plus:</li>
+          <li>Vervolgtraject voor winnende ideeën</li>
+          <li>Co-creatie sessies met lokale experts</li>
+          <li>Prototype-ontwikkeling van ideeën</li>
+          <li>Publiek showcase event voor de stad</li>
+          <li>Jongeren structureel betrokken bij technologie</li>
+          <li>Nieuwe innovaties voor de stad</li>
+        </ul>
+        <br>
+        <a href="index.html#contact" class="btn btn-teal">Vraag informatie aan</a>
+      </div>
+      <div class="prog-visual">
+        <h4>Wat je krijgt</h4>
+        <div class="prog-visual-item"><div class="prog-visual-icon"><svg viewBox="0 0 24 24"><path d="M19.5 2h-15A1.5 1.5 0 003 3.5v17A1.5 1.5 0 004.5 22h15a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0019.5 2zM7 7h10v2H7zm0 4h10v2H7zm0 4h7v2H7z"/></svg></div><div class="prog-visual-text"><strong>Echte prototypes</strong><span>Werkende ideeën die de stad direct kan inzetten</span></div></div>
+        <div class="prog-visual-item"><div class="prog-visual-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div class="prog-visual-text"><strong>Showcase event</strong><span>Zichtbaar moment voor de hele stad met media-aandacht</span></div></div>
+        <div class="prog-visual-item"><div class="prog-visual-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div><div class="prog-visual-text"><strong>Structurele jeugdbetrokkenheid</strong><span>Jongeren als vaste partners in stedelijke innovatie</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="wrap"><div class="footer-grid"><div><div class="footer-name">Junior AI League</div><div class="footer-tag">Solve · Create · Impact</div><p class="footer-desc">Een programma van NextGen AI, uitgevoerd onder Stichting Bits.</p></div><div><div class="footer-h">Pagina's</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="programmas.html">Programma's</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="in-beeld.html">In beeld</a></li></ul></div><div><div class="footer-h">Programma</div><ul class="footer-links"><li><a href="#s">AI Hackathon Event (S)</a></li><li><a href="#m">AI City Challenge (M)</a></li><li><a href="#l">AI City Prototypes (L)</a></li></ul></div><div><div class="footer-h">Contact</div><ul class="footer-links"><li><a href="mailto:info@nextgen-ai.club">info@nextgen-ai.club</a></li><li><a href="tel:0611736039">06 11 73 60 39</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 Junior AI League · Powered by NextGen AI · Uitgevoerd door Stichting Bits</p></div></div></footer>
+<script src="assets/js/main.js"></script>
+</body></html>

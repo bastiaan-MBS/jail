@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Over ons – Junior AI League</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.org-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-bottom:60px; }
+.org-card { background:var(--white); border-radius:16px; border:1px solid var(--border); box-shadow:0 4px 24px rgba(0,14,114,.07); overflow:hidden; }
+.org-card-top { background:linear-gradient(135deg,var(--navy),#013a60); padding:36px; }
+.org-card-top img { max-height:44px; max-width:180px; filter:brightness(0) invert(1); margin-bottom:16px; }
+.org-card-top .org-name-fallback { font-family:'Rajdhani',sans-serif; font-size:22px; font-weight:700; color:#fff; letter-spacing:.06em; margin-bottom:12px; }
+.org-card-top p { font-size:14px; color:rgba(255,255,255,.7); line-height:1.6; }
+.org-card-body { padding:32px; }
+.org-card-body h4 { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:.2em; color:var(--teal); text-transform:uppercase; margin-bottom:16px; }
+.org-card-body ul { list-style:none; }
+.org-card-body li { padding:8px 0 8px 20px; position:relative; font-size:14px; border-bottom:1px solid var(--border); line-height:1.5; }
+.org-card-body li::before { content:'›'; position:absolute; left:0; color:var(--teal); font-size:18px; line-height:1.3; }
+.missie-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+.stat-dark { background:rgba(255,255,255,.07); border:1px solid rgba(195,251,234,.15); border-radius:10px; padding:20px; text-align:center; }
+.stat-dark-n { font-family:'Rajdhani',sans-serif; font-size:40px; font-weight:700; color:var(--mint); line-height:1; display:block; }
+.stat-dark-l { font-size:13px; color:rgba(255,255,255,.55); margin-top:5px; }
+.stats-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:32px; }
+@media(max-width:960px){ .org-grid,.missie-grid{ grid-template-columns:1fr; } .stats-4{ grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-in"><a href="index.html" class="nav-logo"><img src="https://irp.cdn-website.com/5f9ed68d/dms3rep/multi/LOGO+JAIL_1.svg" onerror="this.style.display='none'" alt="Junior AI League"><div class="nav-wordmark">Junior AI League<small>Powered by NextGen AI</small></div></a><ul class="nav-links"><li><a href="index.html#waarom">Waarom</a></li><li><a href="programmas.html">Programma's</a></li><li><a href="over-ons.html" class="active">Over ons</a></li><li><a href="in-beeld.html">In beeld</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="index.html#contact" class="btn btn-teal btn-sm nav-cta">Start een league</a></li></ul></div></nav>
+
+<section class="page-hero"><div class="wrap"><span class="tag page-hero-tag r">Wie wij zijn</span><h1 class="r">Gebouwd op jarenlange <em>ervaring.</em></h1><p class="r">Junior AI League is een initiatief van NextGen AI, uitgevoerd onder Stichting Bits. Samen brengen we meer dan twee jaar ervaring mee in AI-educatie voor kinderen door heel Nederland.</p></div></section>
+
+<section class="section-light" style="padding-top:100px;">
+  <div class="wrap">
+    <div style="max-width:620px;margin-bottom:52px;" class="r">
+      <span class="tag">De organisaties</span>
+      <h2>Twee organisaties, <em>één missie.</em></h2>
+      <div class="rule"></div>
+    </div>
+    <div class="org-grid">
+      <div class="org-card r">
+        <div class="org-card-top">
+          <img src="https://www.nextgen-ai.club/themes/custom/nextgen-ai/dist/images/logo.svg" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" alt="NextGen AI">
+          <div class="org-name-fallback" style="display:none;">NextGen AI</div>
+          <p>De drijvende kracht achter Junior AI League. NextGen AI organiseert AI-workshops en hackathons voor kinderen door heel Nederland.</p>
+        </div>
+        <div class="org-card-body">
+          <h4>Wat NextGen AI doet</h4>
+          <ul>
+            <li>AI-workshops voor kinderen van 10 tot 15 jaar</li>
+            <li>Actief in 7 provincies door heel Nederland</li>
+            <li>Meer dan 15.000 kinderen bereikt sinds 2023</li>
+            <li>Ontwikkelaar van de Junior AI League methodiek</li>
+            <li>Eigen kindvriendelijke en veilige AI-omgeving</li>
+          </ul>
+        </div>
+      </div>
+      <div class="org-card r r1">
+        <div class="org-card-top">
+          <img src="https://www.bitsweb.nl/themes/custom/bitsweb/dist/images/logo-dark.svg" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" alt="Stichting Bits">
+          <div class="org-name-fallback" style="display:none;">Stichting Bits</div>
+          <p>De programma's van Junior AI League worden uitgevoerd onder de vlag van Stichting Bits, een onafhankelijke stichting gericht op digitale educatie.</p>
+        </div>
+        <div class="org-card-body">
+          <h4>Wat Stichting Bits doet</h4>
+          <ul>
+            <li>Borgt de kwaliteit en onafhankelijkheid van het programma</li>
+            <li>Faciliteert subsidieaanvragen en fondsenwerving</li>
+            <li>Verbindt maatschappelijke partners aan het programma</li>
+            <li>Bewaker van de missie op lange termijn</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-dark exit-white">
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div class="missie-grid">
+      <div class="r">
+        <span class="tag tag--light">Onze missie</span>
+        <h2 class="on-dark">Kinderen klaarstomen voor <em>de wereld van morgen.</em></h2>
+        <div class="rule rule--light"></div>
+        <p class="lead lead--light" style="margin-bottom:16px;">Wij geloven dat elk kind het recht heeft om te begrijpen hoe AI werkt en hoe je het juist inzet. Niet als passieve gebruiker maar als actieve probleemoplosser.</p>
+        <p class="lead lead--light" style="margin-bottom:16px;">Dat doen we door kinderen niet voor te lichten maar ze aan het werk te zetten. Met echte problemen. Met echte tools. Met echte impact.</p>
+        <p class="lead lead--light">Junior AI League is het bewijs dat kinderen van 10 tot 15 jaar in staat zijn om bij te dragen aan de stad van morgen — als je ze de kans geeft.</p>
+      </div>
+      <div class="r r2">
+        <div class="stats-4">
+          <div class="stat-dark"><span class="stat-dark-n">15.000+</span><div class="stat-dark-l">Kinderen bereikt</div></div>
+          <div class="stat-dark"><span class="stat-dark-n">7</span><div class="stat-dark-l">Provincies actief</div></div>
+          <div class="stat-dark"><span class="stat-dark-n">530+</span><div class="stat-dark-l">League deelnemers</div></div>
+          <div class="stat-dark"><span class="stat-dark-n">2023</span><div class="stat-dark-l">Actief sinds</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-gray enter-gray">
+  <div class="wrap" style="text-align:center;max-width:680px;margin:0 auto;">
+    <span class="tag r">Meedoen</span>
+    <h2 class="r">Klaar om samen <em>een league te starten?</em></h2>
+    <div class="rule rule--center r"></div>
+    <p class="lead r" style="margin-bottom:36px;">Of je nu een gemeente bent, een bedrijf, een school of een maatschappelijke organisatie — we denken graag mee over wat mogelijk is in jouw stad.</p>
+    <a href="index.html#contact" class="btn btn-teal r">Neem contact op</a>
+  </div>
+</section>
+
+<footer class="footer"><div class="wrap"><div class="footer-grid"><div><div class="footer-name">Junior AI League</div><div class="footer-tag">Solve · Create · Impact</div><p class="footer-desc">Een programma van NextGen AI, uitgevoerd onder Stichting Bits.</p></div><div><div class="footer-h">Pagina's</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="programmas.html">Programma's</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="in-beeld.html">In beeld</a></li></ul></div><div><div class="footer-h">Links</div><ul class="footer-links"><li><a href="https://www.nextgen-ai.club" target="_blank">nextgen-ai.club</a></li><li><a href="https://www.bitsweb.nl" target="_blank">Stichting Bits</a></li></ul></div><div><div class="footer-h">Contact</div><ul class="footer-links"><li><a href="mailto:info@nextgen-ai.club">info@nextgen-ai.club</a></li><li><a href="tel:0611736039">06 11 73 60 39</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 Junior AI League · Powered by NextGen AI · Uitgevoerd door Stichting Bits</p></div></div></footer>
+<script src="assets/js/main.js"></script>
+</body></html>
