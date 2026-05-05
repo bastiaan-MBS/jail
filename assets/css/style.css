@@ -368,3 +368,36 @@ h3 { font-size:clamp(20px,2.5vw,28px); color:var(--navy); margin-bottom:12px; }
   .page-hero p { font-size:16px; }
   .btn { padding:13px 24px; font-size:13px; }
 }
+
+/* ── TEAM ── */
+.team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+.team-card { background:var(--white); border-radius:14px; border:1px solid var(--border); box-shadow:var(--shadow); overflow:hidden; text-align:center; }
+.team-card-img { height:240px; overflow:hidden; background:var(--gray); }
+.team-card-img img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform .4s; }
+.team-card:hover .team-card-img img { transform:scale(1.04); }
+.team-card-body { padding:24px 20px 28px; }
+.team-card-name { font-family:'Rajdhani',sans-serif; font-size:22px; font-weight:700; color:var(--navy); margin-bottom:4px; letter-spacing:.04em; }
+.team-card-role { font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--teal); margin-bottom:14px; }
+.team-card-email { font-size:13px; color:var(--body); opacity:.55; transition:opacity .2s; }
+.team-card-email:hover { color:var(--teal); opacity:1; }
+@media(max-width:960px){ .team-grid{ grid-template-columns:1fr 1fr; } }
+@media(max-width:640px){ .team-grid{ grid-template-columns:1fr; } }
+
+/* ── FOTOBIBLIOTHEEK ── */
+.foto-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+.foto-item { display:block; aspect-ratio:4/3; overflow:hidden; border-radius:8px; cursor:pointer; }
+.foto-item img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+.foto-item:hover img { transform:scale(1.06); }
+.foto-modal { display:none; position:fixed; inset:0; z-index:1000; align-items:center; justify-content:center; }
+.foto-modal.open { display:flex; }
+.foto-modal-overlay { position:absolute; inset:0; background:rgba(0,0,0,.92); cursor:pointer; }
+.foto-modal-inner { position:relative; z-index:1; }
+.foto-modal-inner img { max-width:90vw; max-height:88vh; border-radius:8px; display:block; }
+.foto-modal-close { position:absolute; top:-44px; right:0; background:none; border:none; color:#fff; font-size:36px; cursor:pointer; line-height:1; opacity:.7; transition:opacity .2s; }
+.foto-modal-close:hover { opacity:1; }
+@media(max-width:960px){ .foto-grid{ grid-template-columns:repeat(3,1fr); } }
+@media(max-width:640px){ .foto-grid{ grid-template-columns:repeat(2,1fr); } }
+
+/* ── FOOTER LOGO BAR ── */
+.footer-logo-bar { background:var(--white); border-top:1px solid var(--border); padding:28px 0; text-align:center; }
+.footer-logo-bar img { max-height:52px; margin:0 auto; }

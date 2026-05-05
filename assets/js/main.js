@@ -23,10 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Active nav link ──
-  const current = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    if (a.getAttribute('href') === current) a.classList.add('active');
+  // ── Active nav link (clean URLs) ──
+  const path = location.pathname.replace(/\/$/, '') || '/';
+  document.querySelectorAll('.nav-links a[href]').forEach(a => {
+    const h = a.getAttribute('href').split('#')[0];
+    if (!h || h === '/') return;
+    if (path === h || path.startsWith(h + '/')) a.classList.add('active');
   });
 
   // ── Hamburger menu ──
@@ -52,13 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const tiles = Array.from(mediaGrid.querySelectorAll('[data-cat]'));
     const catLabels = { event: 'Events', video: 'Video', shorts: 'Shorts' };
 
-    // Collect unique categories in order of appearance
     const cats = [];
     tiles.forEach(t => {
       if (!cats.includes(t.dataset.cat)) cats.push(t.dataset.cat);
     });
 
-    // Build filter buttons
     const makeBtn = (label, filter) => {
       const btn = document.createElement('button');
       btn.className = 'filter-btn';
@@ -67,16 +67,29 @@ document.addEventListener('DOMContentLoaded', () => {
       return btn;
     };
 
+    // Insert dynamic buttons before any static buttons (e.g. Foto's)
+    const staticBtn = filterBar.querySelector('[data-scroll]');
     const allBtn = makeBtn('Alles', 'all');
     allBtn.classList.add('active');
-    filterBar.appendChild(allBtn);
-    cats.forEach(cat => filterBar.appendChild(makeBtn(catLabels[cat] || cat, cat)));
+    filterBar.insertBefore(allBtn, filterBar.firstChild);
+    cats.forEach(cat => {
+      const btn = makeBtn(catLabels[cat] || cat, cat);
+      if (staticBtn) filterBar.insertBefore(btn, staticBtn);
+      else filterBar.appendChild(btn);
+    });
 
-    // Filter click handler
     filterBar.addEventListener('click', e => {
       const btn = e.target.closest('.filter-btn');
       if (!btn) return;
-      filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+
+      // Scroll buttons navigate to anchor instead of filtering
+      if (btn.dataset.scroll) {
+        const target = document.getElementById(btn.dataset.scroll);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      filterBar.querySelectorAll('.filter-btn:not([data-scroll])').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const f = btn.dataset.filter;
       tiles.forEach(t => {
@@ -86,32 +99,66 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Video modal (in-beeld.html) ──
-  const modal   = document.getElementById('video-modal');
-  const iframe  = document.getElementById('video-modal-iframe');
-  if (modal && iframe) {
-    const overlay  = modal.querySelector('.video-modal-overlay');
-    const closeBtn = modal.querySelector('.video-modal-close');
+  const videoModal = document.getElementById('video-modal');
+  const iframe     = document.getElementById('video-modal-iframe');
+
+  // ── Foto lightbox (in-beeld.html) ──
+  const fotoModal = document.getElementById('foto-modal');
+  const fotoImg   = document.getElementById('foto-modal-img');
+
+  if (videoModal && iframe) {
+    const overlay  = videoModal.querySelector('.video-modal-overlay');
+    const closeBtn = videoModal.querySelector('.video-modal-close');
 
     document.querySelectorAll('[data-video-id]').forEach(tile => {
       tile.addEventListener('click', e => {
         e.preventDefault();
         const id = tile.dataset.videoId;
         iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-        modal.classList.add('open');
-        modal.classList.toggle('is-shorts', tile.dataset.cat === 'shorts');
+        videoModal.classList.add('open');
+        videoModal.classList.toggle('is-shorts', tile.dataset.cat === 'shorts');
       });
     });
 
-    const closeModal = () => {
-      modal.classList.remove('open', 'is-shorts');
+    const closeVideo = () => {
+      videoModal.classList.remove('open', 'is-shorts');
       iframe.src = '';
     };
-
-    overlay.addEventListener('click', closeModal);
-    closeBtn.addEventListener('click', closeModal);
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeModal();
-    });
+    overlay.addEventListener('click', closeVideo);
+    closeBtn.addEventListener('click', closeVideo);
   }
+
+  if (fotoModal && fotoImg) {
+    const fotoOverlay  = fotoModal.querySelector('.foto-modal-overlay');
+    const fotoCloseBtn = fotoModal.querySelector('.foto-modal-close');
+
+    document.querySelectorAll('.foto-item').forEach(item => {
+      item.addEventListener('click', e => {
+        e.preventDefault();
+        fotoImg.src = item.href;
+        fotoModal.classList.add('open');
+      });
+    });
+
+    const closeFoto = () => {
+      fotoModal.classList.remove('open');
+      fotoImg.src = '';
+    };
+    fotoOverlay.addEventListener('click', closeFoto);
+    fotoCloseBtn.addEventListener('click', closeFoto);
+  }
+
+  // ── Escape sluit alle modals ──
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (videoModal && videoModal.classList.contains('open')) {
+      videoModal.classList.remove('open', 'is-shorts');
+      if (iframe) iframe.src = '';
+    }
+    if (fotoModal && fotoModal.classList.contains('open')) {
+      fotoModal.classList.remove('open');
+      if (fotoImg) fotoImg.src = '';
+    }
+  });
 
 });

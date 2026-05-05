@@ -9,6 +9,8 @@
 .filter-bar { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px; min-height:42px; }
 .filter-btn { font-family:'Rajdhani',sans-serif; font-size:12px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; padding:9px 20px; border-radius:4px; border:1.5px solid var(--border); background:var(--white); color:var(--body); cursor:pointer; transition:all .2s; }
 .filter-btn:hover, .filter-btn.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+.filter-btn[data-scroll] { border-color:var(--teal); color:var(--teal); }
+.filter-btn[data-scroll]:hover { background:var(--teal); color:#fff; border-color:var(--teal); }
 
 .media-tile-img-only { height:260px; }
 [data-cat="shorts"] .media-tile-img { height:300px; }
@@ -50,17 +52,18 @@
 
 <nav class="nav">
   <div class="nav-in">
-    <a href="index.html" class="nav-logo">
+    <a href="/" class="nav-logo">
       <img src="assets/images/LOGO JAIL Dark BG.svg" onerror="this.style.display='none'" alt="Junior AI League">
       <div class="nav-wordmark">Junior AI League<small>Powered by NextGen AI</small></div>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#waarom">Waarom</a></li>
-      <li><a href="programmas.html">Programma's</a></li>
-      <li><a href="over-ons.html">Over ons</a></li>
-      <li><a href="in-beeld.html" class="active">In beeld</a></li>
-      <li><a href="index.html#faq">FAQ</a></li>
-      <li><a href="index.html#contact" class="btn btn-teal btn-sm nav-cta">Start een league</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#waarom">Waarom</a></li>
+      <li><a href="/programmas">Programma's</a></li>
+      <li><a href="/over-ons">Over ons</a></li>
+      <li><a href="/in-beeld" class="active">In beeld</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/#contact" class="btn btn-teal btn-sm nav-cta">Start een league</a></li>
     </ul>
     <button class="nav-hamburger" aria-label="Menu openen">
       <span></span><span></span><span></span>
@@ -79,13 +82,13 @@
 <section class="section-light" style="padding-top:80px;">
   <div class="wrap">
 
-    <div class="filter-bar r" id="filter-bar"></div>
+    <!-- Filter bar — dynamic buttons worden vóór Foto's ingevoegd door JS -->
+    <div class="filter-bar r" id="filter-bar">
+      <button class="filter-btn" data-scroll="fotobibliotheek">Foto's</button>
+    </div>
 
     <!-- ════ MEDIA TEGELS ════
-         Nieuwste bovenaan. Elke tegel krijgt een data-cat attribuut:
-           data-cat="event"   → event verslagen
-           data-cat="video"   → reguliere YouTube video (16:9)
-           data-cat="shorts"  → YouTube Shorts (portret)
+         Nieuwste bovenaan. data-cat: event | video | shorts
          Video tegels krijgen ook data-video-id="YOUTUBE_ID"
     ════ -->
     <div class="media-grid" id="media-grid">
@@ -140,7 +143,7 @@
       </div>
 
       <!-- TEGEL: Tilburg 2025 -->
-      <a href="media/tilburg-2025.html" class="media-tile r r1" data-cat="event">
+      <a href="/media/tilburg-2025" class="media-tile r r1" data-cat="event">
         <div class="media-tile-img media-tile-img-only">
           <img src="assets/images/tilburg-2026.png" alt="Junior AI League Tilburg">
           <span class="media-tile-cat">Event verslag</span>
@@ -151,7 +154,7 @@
       </a>
 
       <!-- TEGEL: Breda 2025 -->
-      <a href="media/breda-2025.html" class="media-tile r r2" data-cat="event">
+      <a href="/media/breda-2025" class="media-tile r r2" data-cat="event">
         <div class="media-tile-img media-tile-img-only">
           <img src="assets/images/breda-2025.png" alt="Junior AI League Breda">
           <span class="media-tile-cat">Event verslag</span>
@@ -161,6 +164,41 @@
         </div>
       </a>
 
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOTOBIBLIOTHEEK ════ -->
+<section class="section-gray" id="fotobibliotheek" style="padding-top:80px;">
+  <div class="wrap">
+    <div style="max-width:620px;margin-bottom:40px;" class="r">
+      <span class="tag">Fotobibliotheek</span>
+      <h2>Beelden van <em>onze events.</em></h2>
+      <div class="rule"></div>
+      <p class="lead">Klik op een foto om deze vergroot te bekijken.</p>
+    </div>
+    <div class="foto-grid">
+      <a class="foto-item r" href="assets/images/fotobibliotheek/junior-ai-league.png">
+        <img src="assets/images/fotobibliotheek/junior-ai-league.png" alt="Junior AI League">
+      </a>
+      <a class="foto-item r r1" href="assets/images/fotobibliotheek/junior-ai-league%20(2).png">
+        <img src="assets/images/fotobibliotheek/junior-ai-league%20(2).png" alt="Junior AI League">
+      </a>
+      <a class="foto-item r r2" href="assets/images/fotobibliotheek/junior-ai-league%20(3).png">
+        <img src="assets/images/fotobibliotheek/junior-ai-league%20(3).png" alt="Junior AI League">
+      </a>
+      <a class="foto-item r r3" href="assets/images/fotobibliotheek/junior-ai-league%20(4).png">
+        <img src="assets/images/fotobibliotheek/junior-ai-league%20(4).png" alt="Junior AI League">
+      </a>
+      <a class="foto-item r" href="assets/images/fotobibliotheek/junior-ai-league%20(5).png">
+        <img src="assets/images/fotobibliotheek/junior-ai-league%20(5).png" alt="Junior AI League">
+      </a>
+      <a class="foto-item r r1" href="assets/images/fotobibliotheek/junior-ai-league%20(6).png">
+        <img src="assets/images/fotobibliotheek/junior-ai-league%20(6).png" alt="Junior AI League">
+      </a>
+      <a class="foto-item r r2" href="assets/images/fotobibliotheek/junior-ai-league%20(7).png">
+        <img src="assets/images/fotobibliotheek/junior-ai-league%20(7).png" alt="Junior AI League">
+      </a>
     </div>
   </div>
 </section>
@@ -176,7 +214,20 @@
   </div>
 </div>
 
-<footer class="footer"><div class="wrap"><div class="footer-grid"><div><div class="footer-name">Junior AI League</div><div class="footer-tag">Solve · Create · Impact</div><p class="footer-desc">Een programma van NextGen AI, uitgevoerd onder Stichting Bits.</p></div><div><div class="footer-h">Pagina's</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="programmas.html">Programma's</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="in-beeld.html">In beeld</a></li></ul></div><div><div class="footer-h">Contact</div><ul class="footer-links"><li><a href="mailto:info@nextgen-ai.club">info@nextgen-ai.club</a></li><li><a href="tel:0611736039">06 11 73 60 39</a></li></ul></div><div><div class="footer-h">Partners</div><ul class="footer-links"><li><a href="https://www.nextgen-ai.club" target="_blank">NextGen AI</a></li><li><a href="https://www.bitsweb.nl" target="_blank">Stichting Bits</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 Junior AI League · Powered by NextGen AI · Uitgevoerd door Stichting Bits</p></div></div></footer>
+<!-- Foto lightbox -->
+<div id="foto-modal" class="foto-modal" role="dialog" aria-modal="true">
+  <div class="foto-modal-overlay"></div>
+  <div class="foto-modal-inner">
+    <button class="foto-modal-close" aria-label="Sluiten">×</button>
+    <img id="foto-modal-img" src="" alt="Foto">
+  </div>
+</div>
+
+<div class="footer-logo-bar">
+  <div class="wrap"><img src="assets/images/JAIL LOGO LIGGEND.svg" alt="Junior AI League"></div>
+</div>
+
+<footer class="footer"><div class="wrap"><div class="footer-grid"><div><div class="footer-name">Junior AI League</div><div class="footer-tag">Solve · Create · Impact</div><p class="footer-desc">Een programma van NextGen AI, uitgevoerd onder Stichting Bits.</p></div><div><div class="footer-h">Pagina's</div><ul class="footer-links"><li><a href="/">Home</a></li><li><a href="/programmas">Programma's</a></li><li><a href="/over-ons">Over ons</a></li><li><a href="/in-beeld">In beeld</a></li></ul></div><div><div class="footer-h">Contact</div><ul class="footer-links"><li><a href="mailto:peter@junioraileague.nl">peter@junioraileague.nl</a></li><li><a href="tel:0611736039">06 11 73 60 39</a></li><li><a href="https://calendly.com/peter-impact" target="_blank" rel="noopener">Plan een gesprek →</a></li></ul></div><div><div class="footer-h">Partners</div><ul class="footer-links"><li><a href="https://www.nextgen-ai.club" target="_blank">NextGen AI</a></li><li><a href="https://www.bitsweb.nl" target="_blank">Stichting Bits</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 Junior AI League · Powered by NextGen AI · Uitgevoerd door Stichting Bits</p></div></div></footer>
 
 <script src="assets/js/main.js"></script>
 </body>

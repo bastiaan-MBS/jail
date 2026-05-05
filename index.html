@@ -62,7 +62,7 @@
 
 /* Stats */
 .stats { background:var(--white); border-bottom:1px solid var(--border); padding:48px 0; }
-.stats-row { display:grid; grid-template-columns:repeat(4,1fr); text-align:center; }
+.stats-row { display:grid; grid-template-columns:repeat(3,1fr); text-align:center; }
 .stat { padding:0 20px; border-right:1px solid var(--border); }
 .stat:last-child { border-right:none; }
 .stat-n { font-family:'Rajdhani',sans-serif; font-size:50px; font-weight:700; color:var(--navy); line-height:1; display:block; }
@@ -263,12 +263,13 @@
       <div class="nav-wordmark">Junior AI League<small>Powered by NextGen AI</small></div>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#waarom">Waarom</a></li>
-      <li><a href="programmas.html">Programma's</a></li>
-      <li><a href="over-ons.html">Over ons</a></li>
-      <li><a href="in-beeld.html">In beeld</a></li>
-      <li><a href="index.html#faq">FAQ</a></li>
-      <li><a href="index.html#contact" class="btn btn-teal btn-sm nav-cta">Start een league</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#waarom">Waarom</a></li>
+      <li><a href="/programmas">Programma's</a></li>
+      <li><a href="/over-ons">Over ons</a></li>
+      <li><a href="/in-beeld">In beeld</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/#contact" class="btn btn-teal btn-sm nav-cta">Start een league</a></li>
     </ul>
     <button class="nav-hamburger" aria-label="Menu openen">
       <span></span><span></span><span></span>
@@ -306,8 +307,7 @@
     <div class="stats-row">
       <div class="stat r"><span class="stat-n">530<span>+</span></span><div class="stat-l">Kinderen namen deel</div></div>
       <div class="stat r r1"><span class="stat-n">20</span><div class="stat-l">Locaties</div></div>
-      <div class="stat r r2"><span class="stat-n">2</span><div class="stat-l">Steden</div></div>
-      <div class="stat r r3"><span class="stat-n">130<span>+</span></span><div class="stat-l">Teams met echte oplossingen</div></div>
+      <div class="stat r r2"><span class="stat-n">130<span>+</span></span><div class="stat-l">Teams met echte oplossingen</div></div>
     </div>
   </div>
 </div>
@@ -577,7 +577,7 @@
       </div>
       <div class="ng-logos r r2">
         <div class="ng-logo-box">
-          <img src="assets/images/NEXTGENAI LOGO.svg"
+          <img src="assets/images/NEXTGENAI LOGO.svg" style="filter:none;"
                onerror="this.outerHTML='<div class=\'ng-logo-name\'>NextGen AI</div>'" alt="NextGen AI">
           <div class="ng-logo-cap">nextgen-ai.club</div>
         </div>
@@ -636,29 +636,34 @@
           <div class="contact-name">Peter Brouwers</div>
           <div class="contact-links">
             <a href="tel:0611736039" class="c-link"><div class="c-link-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>06 11 73 60 39</a>
-            <a href="mailto:info@nextgen-ai.club" class="c-link"><div class="c-link-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>info@nextgen-ai.club</a>
+            <a href="mailto:peter@junioraileague.nl" class="c-link"><div class="c-link-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>peter@junioraileague.nl</a>
+            <a href="https://calendly.com/peter-impact" class="c-link" target="_blank" rel="noopener"><div class="c-link-icon"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>Plan een kennismakingsgesprek</a>
           </div>
-          <a href="mailto:info@nextgen-ai.club" class="btn btn-teal btn-full">Stuur een bericht</a>
-          <div class="contact-donate">Vind je dit een goed initiatief? <a href="#">Steun Junior AI League</a> met een kleine bijdrage en help ons meer kinderen bereiken.</div>
+          <a href="mailto:peter@junioraileague.nl" class="btn btn-teal btn-full">Stuur een bericht</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Footer logo bar -->
+<div class="footer-logo-bar">
+  <div class="wrap"><img src="assets/images/JAIL LOGO LIGGEND.svg" alt="Junior AI League"></div>
+</div>
+
 <!-- ═══ FOOTER ═══ -->
 <footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
       <div><div class="footer-name">Junior AI League</div><div class="footer-tag">Solve · Create · Impact</div><p class="footer-desc">Een programma van NextGen AI, uitgevoerd onder Stichting Bits. Wij geloven dat kinderen die opgroeien in het AI-tijdperk de kans verdienen om te leren hoe ze het juist inzetten voor echte maatschappelijke impact.</p></div>
-      <div><div class="footer-h">Pagina's</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="programmas.html">Programma's</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="in-beeld.html">In beeld</a></li></ul></div>
-      <div><div class="footer-h">Programma</div><ul class="footer-links"><li><a href="programmas.html#s">AI Hackathon Event (S)</a></li><li><a href="programmas.html#m">AI City Challenge (M)</a></li><li><a href="programmas.html#l">AI City Prototypes (L)</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
-      <div><div class="footer-h">Contact</div><ul class="footer-links"><li><a href="mailto:info@nextgen-ai.club">info@nextgen-ai.club</a></li><li><a href="tel:0611736039">06 11 73 60 39</a></li><li><a href="https://www.nextgen-ai.club" target="_blank">nextgen-ai.club</a></li><li><a href="https://www.bitsweb.nl" target="_blank">Stichting Bits</a></li><li><a href="#">Steun ons</a></li></ul></div>
+      <div><div class="footer-h">Pagina's</div><ul class="footer-links"><li><a href="/">Home</a></li><li><a href="/programmas">Programma's</a></li><li><a href="/over-ons">Over ons</a></li><li><a href="/in-beeld">In beeld</a></li></ul></div>
+      <div><div class="footer-h">Programma</div><ul class="footer-links"><li><a href="/programmas#s">AI Hackathon Event (S)</a></li><li><a href="/programmas#m">AI City Challenge (M)</a></li><li><a href="/programmas#l">AI City Prototypes (L)</a></li><li><a href="/#faq">FAQ</a></li></ul></div>
+      <div><div class="footer-h">Contact</div><ul class="footer-links"><li><a href="mailto:peter@junioraileague.nl">peter@junioraileague.nl</a></li><li><a href="tel:0611736039">06 11 73 60 39</a></li><li><a href="https://calendly.com/peter-impact" target="_blank" rel="noopener">Plan een gesprek →</a></li></ul></div>
     </div>
     <div class="footer-bottom">
       <p>© 2025 Junior AI League · junioraileague.nl · Powered by NextGen AI · Uitgevoerd door Stichting Bits</p>
       <div class="footer-partners">
-        <div class="footer-partner"><img src="assets/images/NEXTGENAI LOGO.svg" onerror="this.style.display='none'" alt="NextGen AI"><span>NextGen AI</span></div>
+        <div class="footer-partner"><img src="assets/images/NEXTGENAI LOGO.svg" style="filter:none;opacity:.7;" onerror="this.style.display='none'" alt="NextGen AI"><span>NextGen AI</span></div>
         <div class="footer-partner"><img src="https://www.bitsweb.nl/themes/custom/bitsweb/dist/images/logo-dark.svg" onerror="this.style.display='none'" alt="Stichting Bits"><span>Stichting Bits</span></div>
       </div>
     </div>
