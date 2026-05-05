@@ -6,87 +6,144 @@
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
-.filter-bar { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px; }
+.filter-bar { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px; min-height:42px; }
 .filter-btn { font-family:'Rajdhani',sans-serif; font-size:12px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; padding:9px 20px; border-radius:4px; border:1.5px solid var(--border); background:var(--white); color:var(--body); cursor:pointer; transition:all .2s; }
 .filter-btn:hover, .filter-btn.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+
+.media-tile-img-only { height:260px; }
+
+.video-play {
+  position:absolute; width:64px; height:64px; border-radius:50%;
+  background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center;
+  transition:transform .2s, background .2s; pointer-events:none;
+}
+.video-play svg { fill:var(--navy); width:26px; height:26px; margin-left:4px; }
+.media-tile:hover .video-play { transform:scale(1.1); background:#fff; }
+
+.media-tile.is-hidden { display:none; }
+
+.video-modal {
+  display:none; position:fixed; inset:0; z-index:1000;
+  align-items:center; justify-content:center;
+}
+.video-modal.open { display:flex; }
+.video-modal-overlay {
+  position:absolute; inset:0; background:rgba(0,0,0,.88); cursor:pointer;
+}
+.video-modal-inner {
+  position:relative; z-index:1; width:min(900px,95vw);
+}
+.video-modal-close {
+  position:absolute; top:-46px; right:0;
+  background:none; border:none; color:#fff;
+  font-size:38px; cursor:pointer; line-height:1; opacity:.7; transition:opacity .2s;
+}
+.video-modal-close:hover { opacity:1; }
+.video-modal-wrap { position:relative; width:100%; padding-bottom:56.25%; }
+.video-modal-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:none; border-radius:8px; }
+.video-modal.is-shorts .video-modal-inner { width:min(400px,95vw); }
+.video-modal.is-shorts .video-modal-wrap { padding-bottom:177.78%; }
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-in"><a href="index.html" class="nav-logo"><img src="assets/images/LOGO JAIL Dark BG.svg" onerror="this.style.display='none'" alt="Junior AI League"><div class="nav-wordmark">Junior AI League<small>Powered by NextGen AI</small></div></a><ul class="nav-links"><li><a href="index.html#waarom">Waarom</a></li><li><a href="programmas.html">Programma's</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="in-beeld.html" class="active">In beeld</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="index.html#contact" class="btn btn-teal btn-sm nav-cta">Start een league</a></li></ul></div></nav>
 
-<section class="page-hero"><div class="wrap"><span class="tag page-hero-tag r">Media en impact</span><h1 class="r">In <em>beeld.</em></h1><p class="r">Verslagen, foto's, video's en persberichten van alle Junior AI League events. Klik op een tegel voor het volledige verslag.</p></div></section>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/images/LOGO JAIL Dark BG.svg" onerror="this.style.display='none'" alt="Junior AI League">
+      <div class="nav-wordmark">Junior AI League<small>Powered by NextGen AI</small></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#waarom">Waarom</a></li>
+      <li><a href="programmas.html">Programma's</a></li>
+      <li><a href="over-ons.html">Over ons</a></li>
+      <li><a href="in-beeld.html" class="active">In beeld</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#contact" class="btn btn-teal btn-sm nav-cta">Start een league</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="tag page-hero-tag r">Media en impact</span>
+    <h1 class="r">In <em>beeld.</em></h1>
+    <p class="r">Verslagen, foto's, video's en persberichten van alle Junior AI League events. Klik op een tegel voor het volledige verslag.</p>
+  </div>
+</section>
 
 <section class="section-light" style="padding-top:80px;">
   <div class="wrap">
-    <div class="filter-bar r">
-      <button class="filter-btn active">Alles</button>
-      <button class="filter-btn">Events</button>
-      <button class="filter-btn">In de media</button>
-      <button class="filter-btn">Video</button>
-      <button class="filter-btn">Foto's</button>
-    </div>
 
-  });
-});
-</script>
-</body></html>
+    <div class="filter-bar r" id="filter-bar"></div>
 
     <!-- ════ MEDIA TEGELS ════
-         Voeg nieuwe tegels BOVENAAN toe (nieuwste eerst).
-         Kopieer het blok hieronder en pas aan.
-         Zet de bijbehorende detailpagina in /media/
+         Nieuwste bovenaan. Elke tegel krijgt een data-cat attribuut:
+           data-cat="event"   → event verslagen
+           data-cat="video"   → reguliere YouTube video (16:9)
+           data-cat="shorts"  → YouTube Shorts (portret)
+         Video tegels krijgen ook data-video-id="YOUTUBE_ID"
     ════ -->
-    <div class="media-grid">
+    <div class="media-grid" id="media-grid">
 
-      <!-- TEGEL: Tilburg 2025 -->
-      <a href="media/tilburg-2025.html" class="media-tile r">
+      <!-- VIDEO: Junior AI League aftermovie -->
+      <div class="media-tile r" data-cat="video" data-video-id="4YTetHjJgnw" style="cursor:pointer;">
         <div class="media-tile-img">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="rgba(255,255,255,.3)"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
-          <span class="media-tile-cat">Event verslag</span>
+          <img src="https://img.youtube.com/vi/4YTetHjJgnw/maxresdefault.jpg" alt="Junior AI League video">
+          <div class="video-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="media-tile-cat">Video</span>
         </div>
         <div class="media-tile-body">
-          <div class="media-tile-date">Maart 2025</div>
-          <div class="media-tile-title">Tilburg regio: 12 scholen, 300 kinderen en een finale bij Mindlabs</div>
-          <div class="media-tile-excerpt">Pesten en veiligheid bleken het meest gekozen thema. Kinderen uit heel de regio ontmoetten elkaar voor het eerst bij de regiofinale in Mindlabs.</div>
+          <div class="media-tile-date">2025</div>
+          <div class="media-tile-title">Junior AI League — Bekijk de aftermovie</div>
+          <div class="media-tile-link">Bekijk video</div>
+        </div>
+      </div>
+
+      <!-- TEGEL: Tilburg 2025 -->
+      <a href="media/tilburg-2025.html" class="media-tile r r1" data-cat="event">
+        <div class="media-tile-img media-tile-img-only">
+          <img src="assets/images/tilburg-2026.png" alt="Junior AI League Tilburg">
+          <span class="media-tile-cat">Event verslag</span>
+        </div>
+        <div class="media-tile-body" style="padding:14px 24px 18px;">
           <div class="media-tile-link">Lees meer</div>
         </div>
       </a>
 
       <!-- TEGEL: Breda 2025 -->
-      <a href="media/breda-2025.html" class="media-tile r r1">
-        <div class="media-tile-img">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="rgba(255,255,255,.3)"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+      <a href="media/breda-2025.html" class="media-tile r r2" data-cat="event">
+        <div class="media-tile-img media-tile-img-only">
+          <img src="assets/images/breda-2025.png" alt="Junior AI League Breda">
           <span class="media-tile-cat">Event verslag</span>
         </div>
-        <div class="media-tile-body">
-          <div class="media-tile-date">April 2025</div>
-          <div class="media-tile-title">Stadsfinale Breda in Mezz: 230 kinderen, 8 wijken, één winnaar</div>
-          <div class="media-tile-excerpt">Acht wijkhackathons door heel Breda kwamen samen in een spectaculaire finale. De winnende oplossing: meer beweging in de klas met behulp van AI.</div>
+        <div class="media-tile-body" style="padding:14px 24px 18px;">
           <div class="media-tile-link">Lees meer</div>
         </div>
       </a>
-
-      <!-- PLACEHOLDER TEGEL — vervang met echt item -->
-      <div class="media-tile r r2" style="opacity:.5;cursor:default;">
-        <div class="media-tile-img">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="rgba(255,255,255,.3)"><path d="M19 13H5v-2h14v2z"/><path d="M12 5v14M5 12h14" stroke="rgba(255,255,255,.3)" stroke-width="2"/></svg>
-          <span class="media-tile-cat">Binnenkort</span>
-        </div>
-        <div class="media-tile-body">
-          <div class="media-tile-date">2025</div>
-          <div class="media-tile-title">Meer nieuws volgt</div>
-          <div class="media-tile-excerpt">We zijn druk bezig met nieuwe steden en nieuwe programma's. Houd deze pagina in de gaten voor de laatste updates.</div>
-        </div>
-      </div>
 
     </div>
   </div>
 </section>
 
+<!-- Video modal -->
+<div id="video-modal" class="video-modal" role="dialog" aria-modal="true">
+  <div class="video-modal-overlay"></div>
+  <div class="video-modal-inner">
+    <button class="video-modal-close" aria-label="Sluiten">×</button>
+    <div class="video-modal-wrap">
+      <iframe id="video-modal-iframe" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
 <footer class="footer"><div class="wrap"><div class="footer-grid"><div><div class="footer-name">Junior AI League</div><div class="footer-tag">Solve · Create · Impact</div><p class="footer-desc">Een programma van NextGen AI, uitgevoerd onder Stichting Bits.</p></div><div><div class="footer-h">Pagina's</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="programmas.html">Programma's</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="in-beeld.html">In beeld</a></li></ul></div><div><div class="footer-h">Contact</div><ul class="footer-links"><li><a href="mailto:info@nextgen-ai.club">info@nextgen-ai.club</a></li><li><a href="tel:0611736039">06 11 73 60 39</a></li></ul></div><div><div class="footer-h">Partners</div><ul class="footer-links"><li><a href="https://www.nextgen-ai.club" target="_blank">NextGen AI</a></li><li><a href="https://www.bitsweb.nl" target="_blank">Stichting Bits</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 Junior AI League · Powered by NextGen AI · Uitgevoerd door Stichting Bits</p></div></div></footer>
+
 <script src="assets/js/main.js"></script>
-<script>
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+</body>
+</html>

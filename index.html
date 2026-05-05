@@ -237,6 +237,18 @@
   .prog-row, .refs-row, .thema-row { grid-template-columns:1fr 1fr; }
   .w4, .flow-row, .stats-row, .impact-box { grid-template-columns:1fr 1fr; }
   .flow-row::before { display:none; }
+  .impact-box { padding:32px 24px; }
+  .contact-card { padding:28px; }
+}
+@media (max-width:640px) {
+  .prog-row, .refs-row, .thema-row { grid-template-columns:1fr; }
+  .w4, .stats-row { grid-template-columns:1fr 1fr; }
+  .flow-row, .impact-box { grid-template-columns:1fr 1fr; }
+  .ng-stats { grid-template-columns:1fr 1fr; }
+  .hero h1 { font-size:clamp(26px,8vw,40px); }
+  .hero-actions { flex-direction:column; align-items:flex-start; }
+  .hero-actions .btn { width:100%; text-align:center; }
+  .stat-n { font-size:38px; }
 }
 </style>
 </head>
@@ -258,6 +270,9 @@
       <li><a href="index.html#faq">FAQ</a></li>
       <li><a href="index.html#contact" class="btn btn-teal btn-sm nav-cta">Start een league</a></li>
     </ul>
+    <button class="nav-hamburger" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -268,8 +283,8 @@
       <div>
         <div class="hero-badge r"><div class="hero-dot"></div>Powered by NextGen AI</div>
         <h1 class="r">
-          Leer de generatie die opgroeit met AI<br>
-          om de wereld ermee te verbeteren.
+          Solve challenges,create solutions<br>
+          powered by AI.
         </h1>
         <p class="hero-sub-title r">Doe mee met de Junior AI League.</p>
         <p class="hero-desc r">De Junior AI League brengt kinderen van 10 tot 15 jaar samen om met AI echte oplossingen te bedenken voor de echte maatschappelijke problemen in hun eigen stad.</p>
