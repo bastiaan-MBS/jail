@@ -1,4 +1,4 @@
-name: Deploy naar Vimexx
+name: Deploy to Vimexx
 
 on:
   push:
@@ -6,18 +6,19 @@ on:
       - main
 
 jobs:
-  ftp-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy via rsync over SSH
+        uses: burnett01/rsync-deployments@7.0.1
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /domains/origyns.nl/public_html/jail/
-          local-dir: ./
+          switches: -avzr --delete
+          path: ./
+          remote_path: ${{ secrets.SSH_TARGET_PATH }}
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USERNAME }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_port: 7822
