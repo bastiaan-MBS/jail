@@ -94,16 +94,41 @@
 .c-link-icon { width:38px; height:38px; border-radius:50%; background:var(--teal); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
 .c-link-icon svg { width:17px; height:17px; fill:#fff; }
 
-/* Wat te verwachten */
-.verwacht-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
-.verwacht-card { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:28px 24px; box-shadow:var(--shadow); }
-.verwacht-icon { width:44px; height:44px; border-radius:10px; background:var(--teal); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
-.verwacht-icon svg { width:22px; height:22px; fill:#fff; }
-.verwacht-title { font-family:'Rajdhani',sans-serif; font-size:16px; font-weight:700; color:var(--navy); margin-bottom:6px; letter-spacing:.04em; }
-.verwacht-desc { font-size:14px; color:var(--body); opacity:.7; line-height:1.6; }
+/* Stappen */
+.stappen-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
+.stap-card { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:32px 28px; box-shadow:var(--shadow); position:relative; }
+.stap-num { font-family:'Rajdhani',sans-serif; font-size:64px; font-weight:700; color:var(--teal); opacity:.12; position:absolute; top:12px; right:20px; line-height:1; }
+.stap-icon { width:44px; height:44px; border-radius:10px; background:var(--teal); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+.stap-icon svg { width:22px; height:22px; fill:#fff; }
+.stap-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--teal); margin-bottom:6px; }
+.stap-title { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; color:var(--navy); margin-bottom:10px; letter-spacing:.03em; }
+.stap-desc { font-size:14px; color:var(--body); opacity:.7; line-height:1.65; }
 
-@media(max-width:960px){ .contact-grid{ grid-template-columns:1fr; } .verwacht-grid{ grid-template-columns:1fr 1fr; } }
-@media(max-width:640px){ .verwacht-grid{ grid-template-columns:1fr; } }
+/* Locatie */
+.locatie-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.locatie-map { border-radius:14px; overflow:hidden; box-shadow:var(--shadow); height:380px; }
+.locatie-map iframe { width:100%; height:100%; border:none; display:block; }
+.locatie-adres { display:flex; flex-direction:column; gap:20px; }
+.locatie-adres-item { display:flex; align-items:flex-start; gap:14px; }
+.locatie-adres-icon { width:40px; height:40px; border-radius:10px; background:var(--gray); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.locatie-adres-icon svg { width:20px; height:20px; fill:var(--teal); }
+.locatie-adres-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--teal); margin-bottom:3px; }
+.locatie-adres-val { font-size:15px; color:var(--body); line-height:1.5; }
+.locatie-adres-val a { color:var(--navy); font-weight:600; }
+.locatie-adres-val a:hover { color:var(--teal); }
+
+/* Collectief */
+.collectief-section { background:linear-gradient(135deg,#000e72 0%,#001a9e 50%,#017a6a 100%); padding:80px 0; }
+.collectief-grid { display:grid; grid-template-columns:1fr 400px; gap:72px; align-items:center; }
+.collectief-highlight { background:rgba(195,251,234,.1); border:1px solid rgba(195,251,234,.2); border-radius:14px; padding:32px; }
+.collectief-highlight-title { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--mint); margin-bottom:20px; }
+.collectief-voordeel { display:flex; align-items:flex-start; gap:14px; margin-bottom:16px; }
+.collectief-voordeel:last-child { margin-bottom:0; }
+.collectief-voordeel-dot { width:8px; height:8px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:6px; }
+.collectief-voordeel p { font-size:15px; color:rgba(255,255,255,.8); line-height:1.6; margin:0; }
+
+@media(max-width:960px){ .contact-grid{ grid-template-columns:1fr; } .stappen-grid{ grid-template-columns:1fr 1fr; } .collectief-grid{ grid-template-columns:1fr; } .locatie-grid{ grid-template-columns:1fr; } }
+@media(max-width:640px){ .stappen-grid{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -178,29 +203,132 @@
   </div>
 </section>
 
-<!-- ═══ WAT TE VERWACHTEN (licht grijs) ═══ -->
+<!-- ═══ STAPPEN (licht) ═══ -->
 <section class="section-light" style="padding-top:80px;padding-bottom:100px;">
   <div class="wrap">
     <div style="text-align:center;max-width:560px;margin:0 auto 16px;" class="r">
-      <span class="tag">Wat te verwachten</span>
-      <h2>Zo ziet een eerste gesprek <em>eruit.</em></h2>
+      <span class="tag">Zo werkt het</span>
+      <h2>Van eerste kennismaking tot <em>gezamenlijk plan.</em></h2>
       <div class="rule" style="margin:16px auto;"></div>
+      <p style="font-size:16px;color:var(--body);opacity:.7;line-height:1.7;">We geloven in samenwerking op basis van gedeelde missie. Geen verkooppitch, maar een eerlijk gesprek over wat jij wil bereiken en hoe we dat samen kunnen aanpakken.</p>
     </div>
-    <div class="verwacht-grid">
-      <div class="verwacht-card r">
-        <div class="verwacht-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-        <div class="verwacht-title">30 minuten</div>
-        <div class="verwacht-desc">Een kennismakingsgesprek duurt gemiddeld 30 minuten. We bespreken jouw context, doelen en de schaal die bij je past.</div>
+    <div class="stappen-grid">
+      <div class="stap-card r">
+        <div class="stap-num">1</div>
+        <div class="stap-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+        <div class="stap-label">Stap 1</div>
+        <div class="stap-title">Kennismaking</div>
+        <div class="stap-desc">We starten met een kort gesprek om te voelen of we bij elkaar passen qua missie en werkwijze. Geen pitch — gewoon een eerlijk gesprek over wat jou drijft en hoe wij werken.</div>
       </div>
-      <div class="verwacht-card r r1">
-        <div class="verwacht-icon"><svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg></div>
-        <div class="verwacht-title">Maatwerk voorstel</div>
-        <div class="verwacht-desc">Na het gesprek ontvang je een concreet voorstel op maat. Geen standaard offerte, maar een aanpak die past bij jouw stad.</div>
+      <div class="stap-card r r1">
+        <div class="stap-num">2</div>
+        <div class="stap-icon"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg></div>
+        <div class="stap-label">Stap 2</div>
+        <div class="stap-title">Uitgebreid gesprek</div>
+        <div class="stap-desc">Als er een klik is, plannen we een dieper gesprek. We bespreken gezamenlijke doelen, de gewenste aanpak, welke partners er in jouw stad betrokken kunnen zijn en hoe een league er concreet uitziet.</div>
       </div>
-      <div class="verwacht-card r r2">
-        <div class="verwacht-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
-        <div class="verwacht-title">Geen verplichtingen</div>
-        <div class="verwacht-desc">Het gesprek is vrijblijvend. We verkennen samen wat mogelijk is en wat het beste aansluit bij jouw doelen en budget.</div>
+      <div class="stap-card r r2">
+        <div class="stap-num">3</div>
+        <div class="stap-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div>
+        <div class="stap-label">Stap 3</div>
+        <div class="stap-title">Voorstel in co-creatie</div>
+        <div class="stap-desc">Samen ontwikkelen we een voorstel. Geen standaard offerte, maar een aanpak die gebouwd is rondom jouw context, jouw partners en jouw ambities voor de jeugd in jouw stad.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COLLECTIEF (donker) ═══ -->
+<section class="collectief-section">
+  <div class="wrap">
+    <div class="collectief-grid">
+      <div class="r">
+        <span class="tag tag--light">Samen sterker</span>
+        <h2 class="on-dark" style="margin-bottom:16px;">Sla de handen ineen als <em>collectief voor jouw stad.</em></h2>
+        <div class="rule rule--light"></div>
+        <p class="lead lead--light" style="margin-bottom:20px;">Je hoeft dit niet alleen te doen. Sterker nog: de kracht van de Junior AI League is het grootst wanneer meerdere organisaties in een stad gezamenlijk optrekken. Een gemeente, een school, een woningcorporatie en een lokaal bedrijf die samen investeren in AI weerbaarheid voor de jeugd — dat is een beweging.</p>
+        <p class="lead lead--light">Samen creëer je maximaal draagvlak, meer bereik en een krachtiger signaal: deze stad staat voor haar kinderen. Voor hun toekomst in een wereld die volledig door AI wordt gevormd.</p>
+        <div style="margin-top:32px;">
+          <a href="https://calendly.com/peter-impact" class="btn btn-teal" target="_blank" rel="noopener">Bespreek een collectief aanpak</a>
+        </div>
+      </div>
+      <div class="collectief-highlight r r2">
+        <div class="collectief-highlight-title">Voordelen van een collectief</div>
+        <div class="collectief-voordeel">
+          <div class="collectief-voordeel-dot"></div>
+          <p>Gedeelde kosten, groter bereik — meer kinderen doen mee voor minder individuele investering</p>
+        </div>
+        <div class="collectief-voordeel">
+          <div class="collectief-voordeel-dot"></div>
+          <p>Breed draagvlak in de stad versterkt de zichtbaarheid en de impact van het programma</p>
+        </div>
+        <div class="collectief-voordeel">
+          <div class="collectief-voordeel-dot"></div>
+          <p>Diverse perspectieven van partners zorgen voor rijkere uitdagingen en betere oplossingen</p>
+        </div>
+        <div class="collectief-voordeel">
+          <div class="collectief-voordeel-dot"></div>
+          <p>Gezamenlijk statement: jouw stad kiest bewust voor de AI weerbaarheid van haar jeugd</p>
+        </div>
+        <div class="collectief-voordeel">
+          <div class="collectief-voordeel-dot"></div>
+          <p>Duurzame verankering — een collectief maakt van een eenmalig event een terugkerende league</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LOCATIE (licht) ═══ -->
+<section class="section-light" style="padding-top:80px;padding-bottom:100px;">
+  <div class="wrap">
+    <div class="r" style="margin-bottom:48px;">
+      <span class="tag">Waar je ons vindt</span>
+      <h2>Ons kantoor in <em>Breda.</em></h2>
+      <div class="rule"></div>
+      <p class="lead" style="max-width:560px;">We werken vanuit 5TRACKS Offices in Breda — een gedeelde werkplek op loopafstand van het station. Liever digitaal kennismaken? Dat kan ook prima.</p>
+    </div>
+    <div class="locatie-grid">
+      <div class="locatie-map r">
+        <iframe
+          src="https://maps.google.com/maps?q=Stationslaan+396,+4815+GW+Breda,+Nederland&output=embed&z=15&hl=nl"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Junior AI League — Stationslaan 396, Breda"></iframe>
+      </div>
+      <div class="locatie-adres r r1">
+        <div class="locatie-adres-item">
+          <div class="locatie-adres-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+          <div>
+            <div class="locatie-adres-label">Adres</div>
+            <div class="locatie-adres-val">
+              <strong>5TRACKS Offices — Platform_B</strong><br>
+              Stationslaan 396<br>
+              4815 GW Breda<br>
+              <a href="https://maps.google.com/maps?q=Stationslaan+396,+4815+GW+Breda" target="_blank" rel="noopener" style="font-size:13px;color:var(--teal);margin-top:6px;display:inline-block;">Bekijk op Google Maps →</a>
+            </div>
+          </div>
+        </div>
+        <div class="locatie-adres-item">
+          <div class="locatie-adres-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+          <div>
+            <div class="locatie-adres-label">Telefoon</div>
+            <div class="locatie-adres-val"><a href="tel:0611736039">06 11 73 60 39</a></div>
+          </div>
+        </div>
+        <div class="locatie-adres-item">
+          <div class="locatie-adres-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <div>
+            <div class="locatie-adres-label">E-mail</div>
+            <div class="locatie-adres-val"><a href="mailto:peter@junioraileague.nl">peter@junioraileague.nl</a></div>
+          </div>
+        </div>
+        <div class="locatie-adres-item">
+          <div class="locatie-adres-icon"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>
+          <div>
+            <div class="locatie-adres-label">Kennismakingsgesprek</div>
+            <div class="locatie-adres-val"><a href="https://calendly.com/peter-impact" target="_blank" rel="noopener">Plan direct een gesprek →</a></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
