@@ -4,11 +4,22 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deploy naar'
+        required: true
+        default: 'demo'
+        type: choice
+        options:
+          - demo
+          - production
 
 jobs:
   deploy-demo:
     runs-on: ubuntu-latest
     timeout-minutes: 8
+    if: github.event_name == 'push' || inputs.environment == 'demo'
     steps:
       - uses: actions/checkout@v4
       - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -26,6 +37,7 @@ jobs:
   deploy-production:
     runs-on: ubuntu-latest
     timeout-minutes: 8
+    if: github.event_name == 'workflow_dispatch' && inputs.environment == 'production'
     steps:
       - uses: actions/checkout@v4
       - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
