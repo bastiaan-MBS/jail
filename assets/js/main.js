@@ -52,11 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const mediaGrid = document.getElementById('media-grid');
   if (filterBar && mediaGrid) {
     const tiles = Array.from(mediaGrid.querySelectorAll('[data-cat]'));
-    const catLabels = { event: 'Events', video: 'Video', shorts: 'Shorts', podcast: 'Podcast' };
+    const catLabels = { event: 'Events', video: 'Video', shorts: 'Shorts', podcast: 'Podcast', media: 'In de media' };
 
     const cats = [];
     tiles.forEach(t => {
-      if (!cats.includes(t.dataset.cat)) cats.push(t.dataset.cat);
+      t.dataset.cat.split(' ').forEach(c => {
+        if (c && !cats.includes(c)) cats.push(c);
+      });
     });
 
     const makeBtn = (label, filter) => {
@@ -93,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
       const f = btn.dataset.filter;
       tiles.forEach(t => {
-        t.classList.toggle('is-hidden', f !== 'all' && t.dataset.cat !== f);
+        t.classList.toggle('is-hidden', f !== 'all' && !t.dataset.cat.split(' ').includes(f));
       });
     });
   }

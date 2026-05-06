@@ -116,7 +116,7 @@
         <div class="org-card-top">
           <img src="assets/images/NEXTGENAI LOGO.svg" style="filter:none;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" alt="NextGen AI">
           <div class="org-name-fallback" style="display:none;">NextGen AI</div>
-          <p>De drijvende kracht achter Junior AI League. NextGen AI organiseert AI workshops en hackathons voor kinderen door heel Nederland.</p>
+          <p>De drijvende kracht achter Junior AI League. NextGen AI is in 2023 opgericht om kinderen van 10 tot 15 jaar voor te bereiden op een wereld die door AI wordt bepaald. Dat doen we niet door te vertellen hoe AI werkt, maar door kinderen het zelf te laten ervaren — met eigen kindvriendelijke tools, echte opdrachten en echte impact.</p>
         </div>
         <div class="org-card-body">
           <h4>Wat NextGen AI doet</h4>
@@ -161,26 +161,74 @@
       <p class="lead">Verschuif de tijdlijn en zie hoe Junior AI League is gegroeid — van de eerste workshop in februari 2023 tot vandaag.</p>
     </div>
 
-    <div class="r" style="max-width:760px;margin:0 auto;">
-      <div style="text-align:center;margin-bottom:20px;">
-        <span id="impact-date" style="font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:var(--navy);background:#fff;padding:6px 20px;border-radius:20px;border:2px solid var(--navy);display:inline-block;letter-spacing:.04em;"></span>
+    <div style="max-width:860px;margin:0 auto;">
+
+      <!-- Chart card -->
+      <div class="r" style="background:#fff;border-radius:16px;padding:28px 20px 16px;box-shadow:0 4px 24px rgba(0,14,114,.07);margin-bottom:24px;">
+        <svg id="impact-svg" viewBox="0 0 680 310" width="100%" style="display:block;">
+          <defs>
+            <linearGradient id="curve-fill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#099f8a" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#099f8a" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Axes -->
+          <line x1="55" y1="24" x2="55" y2="266" stroke="#cdd5e0" stroke-width="1.5"/>
+          <line x1="55" y1="266" x2="660" y2="266" stroke="#cdd5e0" stroke-width="1.5"/>
+          <!-- Y gridlines -->
+          <line x1="55" y1="206" x2="660" y2="206" stroke="#eceef3" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="55" y1="145" x2="660" y2="145" stroke="#eceef3" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="55" y1="85"  x2="660" y2="85"  stroke="#eceef3" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="55" y1="24"  x2="660" y2="24"  stroke="#eceef3" stroke-width="1" stroke-dasharray="4,4"/>
+          <!-- X year separator lines -->
+          <line x1="226" y1="24" x2="226" y2="266" stroke="#eceef3" stroke-width="1"/>
+          <line x1="412" y1="24" x2="412" y2="266" stroke="#eceef3" stroke-width="1"/>
+          <line x1="598" y1="24" x2="598" y2="266" stroke="#eceef3" stroke-width="1"/>
+          <!-- Y labels -->
+          <text x="50" y="269" text-anchor="end" font-size="12" fill="#8899b0" font-family="Exo 2,sans-serif">0</text>
+          <text x="50" y="209" text-anchor="end" font-size="12" fill="#8899b0" font-family="Exo 2,sans-serif">3K</text>
+          <text x="50" y="148" text-anchor="end" font-size="12" fill="#8899b0" font-family="Exo 2,sans-serif">6K</text>
+          <text x="50" y="88"  text-anchor="end" font-size="12" fill="#8899b0" font-family="Exo 2,sans-serif">9K</text>
+          <text x="50" y="27"  text-anchor="end" font-size="12" fill="#8899b0" font-family="Exo 2,sans-serif">12K</text>
+          <text x="58" y="14" font-size="10" fill="#aab0c0" font-family="Exo 2,sans-serif" font-style="italic">kinderen</text>
+          <!-- X tick marks -->
+          <line x1="226" y1="266" x2="226" y2="272" stroke="#cdd5e0" stroke-width="1"/>
+          <line x1="412" y1="266" x2="412" y2="272" stroke="#cdd5e0" stroke-width="1"/>
+          <line x1="598" y1="266" x2="598" y2="272" stroke="#cdd5e0" stroke-width="1"/>
+          <!-- X year labels -->
+          <text x="140" y="287" text-anchor="middle" font-size="12" fill="#8899b0" font-family="Exo 2,sans-serif">2023</text>
+          <text x="319" y="287" text-anchor="middle" font-size="12" fill="#8899b0" font-family="Exo 2,sans-serif">2024</text>
+          <text x="505" y="287" text-anchor="middle" font-size="12" fill="#8899b0" font-family="Exo 2,sans-serif">2025</text>
+          <text x="629" y="287" text-anchor="middle" font-size="12" fill="#8899b0" font-family="Exo 2,sans-serif">2026</text>
+          <!-- Area fill (set by JS) -->
+          <path id="impact-area" fill="url(#curve-fill)"/>
+          <!-- Curve line (set by JS) -->
+          <path id="impact-line" fill="none" stroke="#099f8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Indicator: vertical dashed line -->
+          <line id="impact-vline" x1="660" y1="24" x2="660" y2="266" stroke="#000e72" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+          <!-- Indicator: dot on curve -->
+          <circle id="impact-dot" cx="660" cy="24" r="7" fill="#ffca3a" stroke="#000e72" stroke-width="2.5"/>
+          <!-- Date label above indicator -->
+          <text id="impact-chart-label" x="660" y="12" text-anchor="end" font-size="13" font-weight="700" fill="#000e72" font-family="Rajdhani,sans-serif">Mei 2026</text>
+        </svg>
       </div>
 
-      <input type="range" class="impact-slider" min="0" max="39" value="39">
+      <!-- Slider -->
+      <input type="range" class="impact-slider" min="0" max="39" value="39" style="margin-bottom:32px;">
 
-      <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--body);opacity:.55;margin:10px 0 44px;">
-        <span>Feb 2023</span>
-        <span>Mei 2026</span>
-      </div>
-
+      <!-- 3 stat cards -->
       <div class="impact-stats r r1">
-        <div style="background:var(--navy);border-radius:16px;padding:40px 28px;text-align:center;">
-          <span id="impact-kinderen" style="font-family:'Rajdhani',sans-serif;font-size:58px;font-weight:700;color:#ffca3a;line-height:1;display:block;"></span>
-          <span style="font-size:14px;color:rgba(255,255,255,.65);margin-top:10px;display:block;letter-spacing:.03em;">Kinderen bereikt met AI educatie</span>
+        <div style="background:var(--navy);border-radius:16px;padding:36px 20px;text-align:center;">
+          <span id="impact-kinderen" style="font-family:'Rajdhani',sans-serif;font-size:50px;font-weight:700;color:#ffca3a;line-height:1;display:block;">11.678</span>
+          <span style="font-size:13px;color:rgba(255,255,255,.65);margin-top:8px;display:block;">Kinderen bereikt</span>
         </div>
-        <div style="background:linear-gradient(135deg,var(--teal),#017a6a);border-radius:16px;padding:40px 28px;text-align:center;">
-          <span id="impact-provincies" style="font-family:'Rajdhani',sans-serif;font-size:58px;font-weight:700;color:var(--mint);line-height:1;display:block;"></span>
-          <span style="font-size:14px;color:rgba(255,255,255,.65);margin-top:10px;display:block;letter-spacing:.03em;">Provincies actief</span>
+        <div style="background:#ffca3a;border-radius:16px;padding:36px 20px;text-align:center;">
+          <span id="impact-workshops" style="font-family:'Rajdhani',sans-serif;font-size:50px;font-weight:700;color:var(--navy);line-height:1;display:block;">628</span>
+          <span style="font-size:13px;color:rgba(0,14,114,.6);margin-top:8px;display:block;">Workshops gegeven</span>
+        </div>
+        <div style="background:linear-gradient(135deg,var(--teal),#017a6a);border-radius:16px;padding:36px 20px;text-align:center;">
+          <span id="impact-provincies" style="font-family:'Rajdhani',sans-serif;font-size:50px;font-weight:700;color:var(--mint);line-height:1;display:block;">8</span>
+          <span style="font-size:13px;color:rgba(255,255,255,.65);margin-top:8px;display:block;">Provincies actief</span>
         </div>
       </div>
 
@@ -193,41 +241,88 @@
   <style>
   .impact-slider { display:block; width:100%; -webkit-appearance:none; appearance:none; height:8px; border-radius:4px; background:linear-gradient(to right,var(--navy),var(--teal),#c3fbea); outline:none; cursor:pointer; }
   .impact-slider::-webkit-slider-thumb { -webkit-appearance:none; width:28px; height:28px; border-radius:50%; background:#ffca3a; border:3px solid var(--navy); cursor:pointer; box-shadow:0 2px 10px rgba(0,14,114,.25); }
-  .impact-slider::-moz-range-thumb { width:28px; height:28px; border-radius:50%; background:#ffca3a; border:3px solid var(--navy); cursor:pointer; border:none; }
-  .impact-stats { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  @media(max-width:560px){ .impact-stats { grid-template-columns:1fr; } }
+  .impact-slider::-moz-range-thumb { width:28px; height:28px; border-radius:50%; background:#ffca3a; border:3px solid var(--navy); cursor:pointer; }
+  .impact-stats { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  @media(max-width:680px){ .impact-stats { grid-template-columns:1fr 1fr; } }
+  @media(max-width:440px){ .impact-stats { grid-template-columns:1fr; } }
   </style>
 
   <script>
   (function(){
-    var growth=[[0,0],[3,120],[6,380],[9,800],[12,1500],[15,2800],[18,4200],[21,6100],[24,7800],[27,9200],[30,10100],[33,10900],[36,11300],[39,11678]];
+    var kGrowth=[[0,0],[3,120],[6,380],[9,800],[12,1500],[15,2800],[18,4200],[21,6100],[24,7800],[27,9200],[30,10100],[33,10900],[36,11300],[39,11678]];
+    var wGrowth=[[0,0],[3,7],[6,21],[9,45],[12,85],[15,160],[18,240],[21,350],[24,450],[27,530],[30,575],[33,600],[36,617],[39,628]];
     var provT=[1,380,800,1500,2800,6100,9200,10900];
     var mn=['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
-    function getK(m){for(var i=0;i<growth.length-1;i++){var m0=growth[i][0],c0=growth[i][1],m1=growth[i+1][0],c1=growth[i+1][1];if(m>=m0&&m<=m1)return Math.round(c0+(c1-c0)*(m-m0)/(m1-m0));}return growth[growth.length-1][1];}
+    var CX=55,CW=605,CY=266,CH=242;
+
+    function interp(d,m){for(var i=0;i<d.length-1;i++){var m0=d[i][0],c0=d[i][1],m1=d[i+1][0],c1=d[i+1][1];if(m>=m0&&m<=m1)return Math.round(c0+(c1-c0)*(m-m0)/(m1-m0));}return d[d.length-1][1];}
+    function getK(m){return interp(kGrowth,m);}
+    function getW(m){return interp(wGrowth,m);}
     function getP(c){var n=0;for(var i=0;i<provT.length;i++){if(c>=provT[i])n++;else break;}return n;}
     function lbl(m){var t=1+m,yr=2023+Math.floor(t/12),mi=t%12,s=mn[mi];return s.charAt(0).toUpperCase()+s.slice(1)+' '+yr;}
+    function xOf(m){return CX+(m/39)*CW;}
+    function yOf(c){return CY-(c/12000)*CH;}
+
+    // Build SVG curve + area
+    var pts=[];
+    for(var m=0;m<=39;m++) pts.push(xOf(m).toFixed(1)+','+yOf(getK(m)).toFixed(1));
+    document.getElementById('impact-line').setAttribute('d','M'+pts.join(' L'));
+    document.getElementById('impact-area').setAttribute('d','M'+CX+','+CY+' L'+pts.join(' L')+' L'+(CX+CW)+','+CY+' Z');
+
     var slider=document.querySelector('.impact-slider');
     var elK=document.getElementById('impact-kinderen');
+    var elW=document.getElementById('impact-workshops');
     var elP=document.getElementById('impact-provincies');
-    var elD=document.getElementById('impact-date');
+    var vline=document.getElementById('impact-vline');
+    var dot=document.getElementById('impact-dot');
+    var chartLbl=document.getElementById('impact-chart-label');
     if(!slider)return;
-    var cur=11678,raf=null;
-    function animate(tK,tP,label){
-      elD.textContent=label;
+
+    function updateChart(m,k){
+      var x=xOf(m),y=yOf(k);
+      vline.setAttribute('x1',x.toFixed(1));vline.setAttribute('x2',x.toFixed(1));
+      dot.setAttribute('cx',x.toFixed(1));dot.setAttribute('cy',y.toFixed(1));
+      var anchor=x<110?'start':x>590?'end':'middle';
+      chartLbl.setAttribute('x',x.toFixed(1));
+      chartLbl.setAttribute('text-anchor',anchor);
+      chartLbl.textContent=lbl(m);
+    }
+
+    var curK=11678,curW=628,raf=null;
+    function animate(tK,tW,tP){
       elP.textContent=tP;
       if(raf)cancelAnimationFrame(raf);
       (function step(){
-        var diff=tK-cur,d=Math.max(1,Math.abs(Math.round(diff/5)));
-        cur+=diff>0?d:-d;
-        if(Math.abs(cur-tK)<2)cur=tK;
-        elK.textContent=cur.toLocaleString('nl-NL');
-        if(cur!==tK)raf=requestAnimationFrame(step);
+        var dK=tK-curK,dW=tW-curW;
+        curK+=dK>0?Math.max(1,Math.round(dK/5)):-Math.max(1,Math.round(-dK/5));
+        curW+=dW>0?Math.max(1,Math.round(dW/5)):-Math.max(1,Math.round(-dW/5));
+        if(Math.abs(curK-tK)<2)curK=tK;
+        if(Math.abs(curW-tW)<2)curW=tW;
+        elK.textContent=curK.toLocaleString('nl-NL');
+        elW.textContent=curW.toLocaleString('nl-NL');
+        if(curK!==tK||curW!==tW)raf=requestAnimationFrame(step);
       })();
     }
-    slider.addEventListener('input',function(){var m=parseInt(slider.value),k=getK(m);animate(k,getP(k),lbl(m));});
+
+    slider.addEventListener('input',function(){
+      var m=parseInt(slider.value),k=getK(m);
+      updateChart(m,k);
+      animate(k,getW(m),getP(k));
+    });
+
+    // Equalize org-card-top heights after fonts load
+    window.addEventListener('load',function(){
+      var tops=document.querySelectorAll('.org-card-top');
+      var max=0;
+      tops.forEach(function(t){max=Math.max(max,t.offsetHeight);});
+      tops.forEach(function(t){t.style.minHeight=max+'px';});
+    });
+
+    // Init
     elK.textContent=(11678).toLocaleString('nl-NL');
+    elW.textContent=(628).toLocaleString('nl-NL');
     elP.textContent='8';
-    elD.textContent=lbl(39);
+    updateChart(39,11678);
   })();
   </script>
 </section>
