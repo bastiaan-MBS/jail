@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mediaGrid = document.getElementById('media-grid');
   if (filterBar && mediaGrid) {
     const tiles = Array.from(mediaGrid.querySelectorAll('[data-cat]'));
-    const catLabels = { event: 'Events', video: 'Video', shorts: 'Shorts' };
+    const catLabels = { event: 'Events', video: 'Video', shorts: 'Shorts', podcast: 'Podcast' };
 
     const cats = [];
     tiles.forEach(t => {
@@ -148,6 +148,25 @@ document.addEventListener('DOMContentLoaded', () => {
     fotoCloseBtn.addEventListener('click', closeFoto);
   }
 
+  // ── Podcast modal (in-beeld.html) ──
+  const podcastModal  = document.getElementById('podcast-modal');
+  const podcastIframe = document.getElementById('podcast-modal-iframe');
+  if (podcastModal && podcastIframe) {
+    document.querySelectorAll('[data-podcast-src]').forEach(tile => {
+      tile.addEventListener('click', e => {
+        e.preventDefault();
+        podcastIframe.src = tile.dataset.podcastSrc;
+        podcastModal.classList.add('open');
+      });
+    });
+    const closePodcast = () => {
+      podcastModal.classList.remove('open');
+      podcastIframe.src = '';
+    };
+    podcastModal.querySelector('.video-modal-overlay').addEventListener('click', closePodcast);
+    podcastModal.querySelector('.video-modal-close').addEventListener('click', closePodcast);
+  }
+
   // ── Escape sluit alle modals ──
   document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
@@ -158,6 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fotoModal && fotoModal.classList.contains('open')) {
       fotoModal.classList.remove('open');
       if (fotoImg) fotoImg.src = '';
+    }
+    if (podcastModal && podcastModal.classList.contains('open')) {
+      podcastModal.classList.remove('open');
+      if (podcastIframe) podcastIframe.src = '';
     }
   });
 
