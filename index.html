@@ -243,6 +243,30 @@
 .contact-donate a { color:var(--mint); }
 .contact-donate a:hover { text-decoration:underline; }
 
+/* Partner ticker */
+.partner-section { background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:36px 0; overflow:hidden; }
+.partner-label { text-align:center; font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--body); opacity:.4; margin-bottom:28px; }
+.partner-ticker { overflow:hidden; position:relative; }
+.partner-ticker::before, .partner-ticker::after {
+  content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
+}
+.partner-ticker::before { left:0; background:linear-gradient(to right,#fff,transparent); }
+.partner-ticker::after  { right:0; background:linear-gradient(to left,#fff,transparent); }
+.partner-track {
+  display:flex; align-items:center; gap:64px;
+  width:max-content;
+  animation:scroll-partners 35s linear infinite;
+}
+.partner-track img {
+  height:44px; width:auto; max-width:160px;
+  object-fit:contain; opacity:.7;
+  flex-shrink:0;
+}
+@keyframes scroll-partners {
+  from { transform:translateX(0); }
+  to   { transform:translateX(-50%); }
+}
+
 @media (max-width:960px) {
   .hero-grid, .schaal-grid, .waarom-grid, .ng-grid, .contact-grid { grid-template-columns:1fr; }
   .hero-visual { display:none; }
@@ -355,6 +379,30 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ PARTNERS TICKER ═══ -->
+<div class="partner-section">
+  <div class="partner-label">Onze partners</div>
+  <div class="partner-ticker">
+    <div class="partner-track">
+      <img src="assets/images/Partners/ACT%20NOW%20LIGGEND%20GROOT%402x.png" alt="Act Now">
+      <img src="assets/images/Partners/Bredata_Logo_GeelVlak.png" alt="Bredata">
+      <img src="assets/images/Partners/Fontys-Logo.svg_.png" alt="Fontys">
+      <img src="assets/images/Partners/Gemeente-breda-logo.png" alt="Gemeente Breda">
+      <img src="assets/images/Partners/Logo-Tilburg-University-1-768x195-1.webp" alt="Tilburg University">
+      <img src="assets/images/Partners/Ontdekstation-logo.png" alt="Ontdekstation">
+      <img src="assets/images/Partners/mindlabslogo_0.webp" alt="Mindlabs">
+      <!-- Kopie voor naadloze loop -->
+      <img src="assets/images/Partners/ACT%20NOW%20LIGGEND%20GROOT%402x.png" alt="Act Now">
+      <img src="assets/images/Partners/Bredata_Logo_GeelVlak.png" alt="Bredata">
+      <img src="assets/images/Partners/Fontys-Logo.svg_.png" alt="Fontys">
+      <img src="assets/images/Partners/Gemeente-breda-logo.png" alt="Gemeente Breda">
+      <img src="assets/images/Partners/Logo-Tilburg-University-1-768x195-1.webp" alt="Tilburg University">
+      <img src="assets/images/Partners/Ontdekstation-logo.png" alt="Ontdekstation">
+      <img src="assets/images/Partners/mindlabslogo_0.webp" alt="Mindlabs">
+    </div>
+  </div>
+</div>
 
 <!-- ═══ WAAROM URGENT (donker) ═══ -->
 <section class="section-dark exit-white" id="waarom">
