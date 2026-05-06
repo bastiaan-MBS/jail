@@ -1,0 +1,24 @@
+name: Deploy → Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.SSH_TARGET_PATH }}
+          security: loose
+          log-level: verbose
+          exclude: |
+            **/.git*
+            **/.git*/**

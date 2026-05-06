@@ -1,0 +1,22 @@
+name: Deploy → Productie
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD_PROD }}
+          server-dir: ${{ secrets.FTP_TARGET_PATH }}
+          security: loose
+          log-level: verbose
+          exclude: |
+            **/.git*
+            **/.git*/**
