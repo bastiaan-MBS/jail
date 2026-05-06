@@ -18,23 +18,68 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://junioraileague.nl/assets/images/Social-media-graph-junioraileague.png">
 <style>
-.contact-page-hero {
-  padding:140px 0 80px;
-  background:linear-gradient(135deg,#000e72 0%,#001a9e 50%,#017a6a 100%);
-  position:relative; overflow:hidden;
+/* Hero — wit */
+.contact-hero {
+  background:var(--white);
+  padding:120px 0 64px;
+  text-align:center;
 }
-.contact-page-hero::after {
-  content:''; position:absolute; bottom:-1px; left:0; right:0; height:70px;
-  background:var(--white); clip-path:polygon(0 100%,100% 20%,100% 100%);
+.contact-hero-logo {
+  max-width:280px; height:auto;
+  display:block; margin:0 auto 48px;
 }
+.contact-hero h1 {
+  font-family:'Rajdhani',sans-serif; font-weight:700;
+  font-size:clamp(28px,4vw,54px); line-height:1.08;
+  color:var(--navy); max-width:700px; margin:0 auto 20px;
+}
+.contact-hero h1 em { font-style:normal; color:var(--teal); }
+.contact-hero p {
+  font-size:18px; color:var(--body); opacity:.75;
+  max-width:560px; margin:0 auto; line-height:1.75;
+}
+
+/* Partner ticker */
+.partner-section {
+  background:var(--white);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:20px 0 56px;
+  overflow:hidden;
+}
+.partner-label {
+  text-align:center;
+  font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--body); opacity:.4;
+  margin-bottom:28px;
+}
+.partner-ticker { overflow:hidden; position:relative; }
+.partner-ticker::before, .partner-ticker::after {
+  content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
+}
+.partner-ticker::before { left:0; background:linear-gradient(to right,#fff,transparent); }
+.partner-ticker::after  { right:0; background:linear-gradient(to left,#fff,transparent); }
+.partner-track {
+  display:flex; align-items:center; gap:64px;
+  width:max-content;
+  animation:scroll-partners 35s linear infinite;
+}
+.partner-track img {
+  height:44px; width:auto; max-width:160px;
+  object-fit:contain; opacity:.7; flex-shrink:0;
+}
+@keyframes scroll-partners {
+  from { transform:translateX(0); }
+  to   { transform:translateX(-50%); }
+}
+
+/* Contact sectie */
 .contact-grid { display:grid; grid-template-columns:1fr 440px; gap:72px; align-items:start; }
 .contact-list { list-style:none; display:flex; flex-direction:column; gap:12px; margin-top:24px; }
 .contact-list li { position:relative; padding-left:18px; font-size:16px; color:rgba(255,255,255,.82); line-height:1.6; }
 .contact-list li::before { content:'›'; position:absolute; left:0; color:var(--teal); font-size:20px; line-height:1.3; }
-.contact-card {
-  background:rgba(255,255,255,.06); border:1px solid rgba(195,251,234,.15);
-  border-radius:16px; padding:40px;
-}
+.contact-card { background:rgba(255,255,255,.06); border:1px solid rgba(195,251,234,.15); border-radius:16px; padding:40px; }
 .contact-chip {
   display:inline-block;
   background:rgba(255,202,58,.12); border:1px solid rgba(255,202,58,.3); color:var(--yellow);
@@ -46,17 +91,17 @@
 .contact-links { display:flex; flex-direction:column; gap:13px; }
 .c-link { display:flex; align-items:center; gap:13px; color:#fff; font-size:16px; transition:color .2s; }
 .c-link:hover { color:var(--mint); }
-.c-link-icon {
-  width:38px; height:38px; border-radius:50%; background:var(--teal);
-  display:flex; align-items:center; justify-content:center; flex-shrink:0;
-}
+.c-link-icon { width:38px; height:38px; border-radius:50%; background:var(--teal); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
 .c-link-icon svg { width:17px; height:17px; fill:#fff; }
+
+/* Wat te verwachten */
 .verwacht-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
-.verwacht-card { background:var(--gray); border-radius:12px; padding:28px 24px; }
+.verwacht-card { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:28px 24px; box-shadow:var(--shadow); }
 .verwacht-icon { width:44px; height:44px; border-radius:10px; background:var(--teal); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
 .verwacht-icon svg { width:22px; height:22px; fill:#fff; }
 .verwacht-title { font-family:'Rajdhani',sans-serif; font-size:16px; font-weight:700; color:var(--navy); margin-bottom:6px; letter-spacing:.04em; }
 .verwacht-desc { font-size:14px; color:var(--body); opacity:.7; line-height:1.6; }
+
 @media(max-width:960px){ .contact-grid{ grid-template-columns:1fr; } .verwacht-grid{ grid-template-columns:1fr 1fr; } }
 @media(max-width:640px){ .verwacht-grid{ grid-template-columns:1fr; } }
 </style>
@@ -65,14 +110,41 @@
 
 <nav class="nav"><div class="nav-in"><a href="/" class="nav-logo"><img src="assets/images/LOGO JAIL Dark BG.svg" onerror="this.style.display='none'" alt="Junior AI League"><div class="nav-wordmark">Junior AI League<small>Powered by NextGen AI</small></div></a><ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/programmas">Programma's</a></li><li><a href="/over-ons">Over ons</a></li><li><a href="/in-beeld">In beeld</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/contact" class="btn btn-teal btn-sm nav-cta active">Start een league</a></li></ul><button class="nav-hamburger" aria-label="Menu openen"><span></span><span></span><span></span></button></div></nav>
 
-<section class="contact-page-hero">
+<!-- ═══ HERO — wit met prominent liggend logo ═══ -->
+<section class="contact-hero">
   <div class="wrap">
-    <span class="tag tag--light r">Meedoen</span>
-    <h1 style="font-size:clamp(28px,4vw,52px);color:#fff;max-width:720px;line-height:1.1;margin-bottom:16px;" class="r">Starten wij samen een league in <em style="font-style:normal;color:var(--mint);">jouw stad?</em></h1>
-    <p style="font-size:18px;color:rgba(255,255,255,.78);max-width:580px;line-height:1.7;" class="r">Elke stad kan op elk moment beginnen. We denken graag mee over het thema, de schaal en de partners die passen bij jouw context. Maatwerk is altijd mogelijk.</p>
+    <img src="assets/images/JAIL LOGO LIGGEND.svg" alt="Junior AI League" class="contact-hero-logo r">
+    <span class="tag r">Meedoen</span>
+    <h1 class="r" style="margin-top:20px;">Starten wij samen een league in <em>jouw stad?</em></h1>
+    <p class="r" style="margin-top:16px;">Elke stad kan op elk moment beginnen. We denken graag mee over het thema, de schaal en de partners die passen bij jouw context. Maatwerk is altijd mogelijk.</p>
   </div>
 </section>
 
+<!-- ═══ PARTNER TICKER ═══ -->
+<div class="partner-section">
+  <div class="partner-label">Eerder succesvol samengewerkt met</div>
+  <div class="partner-ticker">
+    <div class="partner-track">
+      <img src="assets/images/Partners/ACT%20NOW%20LIGGEND%20GROOT%402x.png" alt="Act Now">
+      <img src="assets/images/Partners/Bredata_Logo_GeelVlak.png" alt="Bredata">
+      <img src="assets/images/Partners/Fontys-Logo.svg_.png" alt="Fontys">
+      <img src="assets/images/Partners/Gemeente-breda-logo.png" alt="Gemeente Breda">
+      <img src="assets/images/Partners/Logo-Tilburg-University-1-768x195-1.webp" alt="Tilburg University">
+      <img src="assets/images/Partners/Ontdekstation-logo.png" alt="Ontdekstation">
+      <img src="assets/images/Partners/mindlabslogo_0.webp" alt="Mindlabs">
+      <!-- Kopie voor naadloze loop -->
+      <img src="assets/images/Partners/ACT%20NOW%20LIGGEND%20GROOT%402x.png" alt="Act Now">
+      <img src="assets/images/Partners/Bredata_Logo_GeelVlak.png" alt="Bredata">
+      <img src="assets/images/Partners/Fontys-Logo.svg_.png" alt="Fontys">
+      <img src="assets/images/Partners/Gemeente-breda-logo.png" alt="Gemeente Breda">
+      <img src="assets/images/Partners/Logo-Tilburg-University-1-768x195-1.webp" alt="Tilburg University">
+      <img src="assets/images/Partners/Ontdekstation-logo.png" alt="Ontdekstation">
+      <img src="assets/images/Partners/mindlabslogo_0.webp" alt="Mindlabs">
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONTACT (donker) ═══ -->
 <section class="section-dark" style="padding-top:80px;padding-bottom:100px;">
   <div class="wrap">
     <div class="contact-grid">
@@ -106,7 +178,8 @@
   </div>
 </section>
 
-<section class="section-gray">
+<!-- ═══ WAT TE VERWACHTEN (licht grijs) ═══ -->
+<section class="section-light" style="padding-top:80px;padding-bottom:100px;">
   <div class="wrap">
     <div style="text-align:center;max-width:560px;margin:0 auto 16px;" class="r">
       <span class="tag">Wat te verwachten</span>
