@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
       const f = btn.dataset.filter;
       tiles.forEach(t => {
+        if (t.dataset.pinned) return;
         t.classList.toggle('is-hidden', f !== 'all' && !t.dataset.cat.split(' ').includes(f));
       });
     });
