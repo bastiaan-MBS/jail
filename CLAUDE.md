@@ -3,7 +3,8 @@
 ## Over dit project
 Website voor Junior AI League (junioraileague.nl), een programma van NextGen AI, uitgevoerd onder Stichting Bits.
 - GitHub: https://github.com/bastiaan-MBS/jail
-- Deploy: automatisch via GitHub Actions bij push naar `main` (FTP naar Vimexx, demo + productie)
+- Deploy demo: automatisch via GitHub Actions bij push naar `main` (`.github/workflows/deploy-demo.yml`)
+- Deploy productie: handmatig triggeren via GitHub API — `curl -X POST -H "Authorization: token TOKEN" "https://api.github.com/repos/bastiaan-MBS/jail/actions/workflows/deploy-production.yml/dispatches" -d '{"ref":"main"}'` (token ophalen via `git credential fill`)
 
 ## Merkwaarden (altijd gebruiken)
 - Navy:   #000e72
@@ -50,10 +51,13 @@ junior-ai-league/
 ├── over-ons.html           — Over ons pagina (incl. team sectie)
 ├── in-beeld.html           — Media overzichtspagina (video, shorts, events, fotobibliotheek)
 ├── contact.html            — Contactpagina / Start een league
-├── media/                  — Detailpagina's per event/artikel
-│   ├── breda-2025.html
-│   ├── tilburg-2025.html
-│   └── [nieuwe events hier toevoegen]
+├── media/                  — Detailpagina's per event/artikel/video
+│   ├── breda-2025.html           — League Breda (vastgepind #1)
+│   ├── tilburg-2025.html         — League Tilburg (vastgepind #2)
+│   ├── dataloog-awards.html      — Dutch Applied AI Awards / De Dataloog podcast
+│   ├── anouk-ontdekstation.html  — Video: Anouk Kooter (Ontdekstation Tilburg)
+│   ├── lennart-fontys.html       — Video: Lennart de Graaf (Fontys)
+│   └── [nieuwe pagina's hier toevoegen]
 ├── assets/
 │   ├── css/style.css       — ALLE gedeelde stijlen hier
 │   ├── js/main.js          — ALLE gedeelde scripts hier
@@ -127,17 +131,29 @@ Staat op homepage (onder "Flexibel en schaalbaar") en op contact.html. Logo's in
 Opbouw: witte hero (liggend logo + Calendly-knop) → partnerticker → donkere contactsectie (voordelen + Peter's kaart) → stappen (3 stappen: kennismaking, uitgebreid gesprek, voorstel in co-creatie) → collectief-sectie → locatiesectie (Google Maps + adresgegevens 5TRACKS Breda) → footer.
 
 ## Hoe een nieuwe mediategel toevoegen (video/short)
-1. Voeg een `.media-tile` toe aan `in-beeld.html` bovenaan de media-grid (nieuwste eerst)
-2. Geef `data-cat="video"` of `data-cat="shorts"` en `data-video-id="YOUTUBE_ID"`
-3. Gebruik `https://img.youtube.com/vi/YOUTUBE_ID/maxresdefault.jpg` als thumbnail
-4. De filterknoppen verschijnen automatisch op basis van aanwezige categorieën
+
+**Twee smaken:**
+
+*A. Video opent in modal (geen eigen pagina):*
+1. Voeg een `.media-tile` div toe met `data-cat="video"` en `data-video-id="YOUTUBE_ID"`
+2. Gebruik `https://img.youtube.com/vi/YOUTUBE_ID/maxresdefault.jpg` als thumbnail
+3. Zet bovenaan de media-grid (nieuwste eerst), ná de vastgepinde tegels
+
+*B. Video heeft eigen detailpagina (interviews, langere content):*
+1. Maak `/media/naam.html` op basis van `anouk-ontdekstation.html`
+2. Embed de video met responsive wrapper: `<div class="video-embed"><iframe src="https://www.youtube.com/embed/ID" ...></div>`
+3. Tegel in in-beeld.html is een `<a href="/media/naam">` met `data-cat="video"` (geen `data-video-id`)
+4. Voeg een play-icoon toe in de thumbnail zodat het herkenbaar is als video
+
+**Categorieën:** `event` | `video` | `shorts` | `podcast` | `media` — filterknoppen verschijnen automatisch. Meerdere categorieën mogelijk via spaties: `data-cat="podcast media"`.
+
+**Vastgepinde tegels:** Breda (#1) en Tilburg (#2) zijn vastgepind met `data-pinned="true"` en staan altijd bovenaan, ook bij filteren. Nieuwe tegels daarna invoegen.
 
 ## Hoe een nieuw evenement-verslag toevoegen
 1. Maak een nieuw HTML-bestand aan in `/media/` op basis van `breda-2025.html`
-2. Voeg een `.media-tile` toe aan `in-beeld.html` met `data-cat="event"`
-3. Zet de tegel bovenaan (nieuwste eerst)
-4. Link naar artikel: `href="/media/naam-jaar"` (tegel is een `<a>`, geen video)
-5. Video in het artikel zelf embedden als responsive iframe
+2. Voeg een `.media-tile` toe aan `in-beeld.html` met `data-cat="event"`, ná de twee vastgepinde tegels
+3. Tegel is een `<a href="/media/naam-jaar">`, geen modal
+4. Video in het artikel zelf embedden als responsive iframe
 
 ## Hoe fotobibliotheek bijwerken
 1. Upload nieuwe foto's naar `assets/images/fotobibliotheek/`
@@ -154,3 +170,21 @@ Opbouw: witte hero (liggend logo + Calendly-knop) → partnerticker → donkere 
 - Scroll reveal op alle content blokken: voeg `.r` klasse toe (`.r1`, `.r2`, `.r3` voor vertraging)
 - Clean URLs: alle interne links zonder `.html` — gebruik `/pagina` niet `pagina.html`
 - Minimum deelnemers S-programma: 30 kinderen (niet 50)
+
+## Toekomstige taak: WCAG 2.1 AA toegankelijkheid
+Audit uitgevoerd op 2026-05-09. Site scoort goed op contrast, semantiek en responsive layout, maar mist een aantal dingen voor volledige AA-compliance. Nog niet opgepakt — oppakken wanneer er tijd voor is.
+
+### Kritiek (blokkeert AA-compliance)
+1. **Focus zichtbaar (2.4.7)** — geen `:focus-visible` stijl in style.css; toetsenbordgebruikers zien niet waar ze zijn. Fix: `a:focus-visible, button:focus-visible { outline: 2px solid #099f8a; outline-offset: 2px; }` toevoegen aan style.css.
+2. **Skip-link (2.4.1)** — geen "sla navigatie over" link. Fix: `<a href="#main" class="skip-link">` vóór de nav op elke pagina; bijbehorende `.skip-link` stijl in style.css.
+3. **`<main>` landmark (1.3.1)** — geen `<main>` element; screenreaders kunnen niet naar hoofdinhoud springen. Fix: hoofdcontent op elke pagina wrappen in `<main id="main">`.
+4. **Filterstatus (4.1.3)** — filteren in "In beeld" geeft geen melding aan screenreaders. Fix: `<div role="status" aria-live="polite" id="filter-status" class="sr-only">` toevoegen en updaten in main.js bij elke filteractie.
+
+### Groot (significante barrière)
+5. **`aria-expanded` op FAQ (4.1.2)** — knoppen togglen visueel maar melden staat niet aan screenreaders. Fix: `aria-expanded` in- en uitschakelen in de FAQ click handler in main.js.
+6. **`aria-pressed` op filterknop (4.1.2)** — actief-staat alleen via CSS class. Fix: `aria-pressed` togglen in de filter click handler in main.js.
+7. **Focus trap in modals (2.1.1)** — tab verlaat modal zonder te sluiten. Fix: focus-trap logica toevoegen in main.js voor video-, foto- en podcast-modals.
+
+### Klein
+- Foto-alt teksten zijn generiek ("Junior AI League") — kunnen beschrijvender.
+- SVG-iconen zonder `aria-hidden="true"` worden soms voorgelezen.
