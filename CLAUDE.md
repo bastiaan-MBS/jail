@@ -171,6 +171,23 @@ Opbouw: witte hero (liggend logo + Calendly-knop) → partnerticker → donkere 
 - Clean URLs: alle interne links zonder `.html` — gebruik `/pagina` niet `pagina.html`
 - Minimum deelnemers S-programma: 30 kinderen (niet 50)
 
+## Toekomstige taak: SEO verbeteringen
+Basis opgepakt op 2026-05-20 (meta title, robots.txt, sitemap.xml). Resterende kansen uit analyse — oppakken wanneer er tijd voor is.
+
+### Hoge impact, relatief eenvoudig
+1. **Canonical tags** — geen `<link rel="canonical">` op pagina's; risico dat Google `/over-ons` en `/over-ons.html` als duplicaten ziet. Fix: canonical toevoegen in `<head>` op alle pagina's.
+2. **Schema.org Organization** — geen structured data op homepage; Google kan organisatie niet als rich result tonen. Fix: JSON-LD block met Organization schema toevoegen aan index.html.
+3. **VideoObject schema** — videodétailpagina's (anouk, lennart, vincent, finale-tilburg) missen structured data. Fix: JSON-LD VideoObject per pagina toevoegen — kans op video rich results in Google.
+4. **Breadcrumb schema** — breadcrumbs zijn visueel aanwezig op mediapagina's maar niet als structured data. Fix: BreadcrumbList JSON-LD toevoegen.
+
+### Hoge impact, meer werk
+5. **Dunnere mediapagina's uitbreiden** — Anouk, Lennart, Vincent en finale-tilburg hebben 3-4 korte alinea's; Google kan dit als thin content beschouwen. Fix: meer context, quotes of achtergrondinfo toevoegen.
+6. **Bredere keywords** — termen als "AI onderwijs kinderen", "AI programma basisschool", "AI voor kinderen" komen weinig voor in de paginateksten.
+
+### Onbekend / extern
+7. **Backlink profiel** — niet meetbaar vanuit de code; dit is de grootste rankingfactor. Controleren via Google Search Console of Ahrefs.
+8. **Google Business Profile** — onbekend of aangemaakt; relevant voor lokale vindbaarheid (Breda, Tilburg).
+
 ## Toekomstige taak: WCAG 2.1 AA toegankelijkheid
 Audit uitgevoerd op 2026-05-09. Site scoort goed op contrast, semantiek en responsive layout, maar mist een aantal dingen voor volledige AA-compliance. Nog niet opgepakt — oppakken wanneer er tijd voor is.
 
